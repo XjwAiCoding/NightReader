@@ -28,22 +28,14 @@ public class StartActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
-       /* AnimationUtil.slideToTopGone(mImageView, 2000, new AnimationUtil.OnAnimationEndListener() {
-            @Override
-            public void onAnimationEnd() {
+        //跳转到MainActivity
+        new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
                 Intent _Intent= MainActivity.getIntent(StartActivity.this);
                 startActivity(_Intent);
-            }
-        });*/
-
-         Handler _Handler=new Handler();
-        _Handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent _Intent= MainActivity.getIntent(StartActivity.this);
-                startActivity(_Intent);
-                overridePendingTransition(0, R.anim.slideout);
+                finish();
+                overridePendingTransition( 0,R.anim.slideout);
 
             }
         },2000);
