@@ -24,15 +24,15 @@ public class MainActivity extends BaseActivity {
 
     CommonTabLayout mTabLayout;
     //底部导航栏标题
-    private  String[] titles=CommonData.titles;
+    private String[] titles = CommonData.titles;
     //底部导航栏未选中图片
-    private int mIconUnSelect[]=CommonData.IconUnSelect;
+    private int mIconUnSelect[] = CommonData.IconUnSelect;
     //底部导航栏选中图片
-    private  int  mIconSelect[]=CommonData.IconSelect;
+    private int mIconSelect[] = CommonData.IconSelect;
 
     private ArrayList<CustomTabEntity> mTabEntities;
-     private newsFragment mNewsFragment;
-     private PhotoFragment mPhotoFragment;
+    private newsFragment mNewsFragment;
+    private PhotoFragment mPhotoFragment;
     private videoFragment mVideoFragment;
     private CareFragment mCareFragment;
 
@@ -48,47 +48,52 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
-     mTabLayout= ViewFinder.getView(this, R.id.tablayout);
+        mTabLayout = ViewFinder.getView(this, R.id.tablayout);
         initTab();
 
     }
 
     @Override
     public void initData() {
-        mTabEntities=new ArrayList<>();
+        mTabEntities = new ArrayList<>();
 
     }
-     /** 初始化fragment碎片*/
-     private  void initFragment(Bundle savedInstanceState ){
-         FragmentTransaction _Transaction=getSupportFragmentManager().beginTransaction();
-         int currentPosition=0;
-         if (savedInstanceState!=null){
-             mNewsFragment=(newsFragment)getSupportFragmentManager().findFragmentByTag("newsFragment");
-             mPhotoFragment=(PhotoFragment)getSupportFragmentManager().findFragmentByTag("photoFragment");
-             mVideoFragment=(videoFragment)getSupportFragmentManager().findFragmentByTag("videoFragment");
-             mCareFragment=(CareFragment)getSupportFragmentManager().findFragmentByTag("careFragment");
-             //程序意外崩溃，再次启动回到保存的上次的位置
-             currentPosition=savedInstanceState.getInt(CommonData.SAVEDINSTANCESTATE_KEY);
 
-         }else {
-             mNewsFragment=new newsFragment();
-             mPhotoFragment=new PhotoFragment();
-             mVideoFragment=new videoFragment();
-             mCareFragment=new CareFragment();
-             _Transaction.add(R.id.commentContent,mNewsFragment,"newsFragment");
-             _Transaction.add(R.id.commentContent,mPhotoFragment,"photoFragment");
-             _Transaction.add(R.id.commentContent,mVideoFragment,"videoFragment");
-             _Transaction.add(R.id.commentContent,mCareFragment,"careFragment");
-         }
-         _Transaction.commit();//提交事务
-         switchToFragment(currentPosition);
-         mTabLayout.setCurrentTab(currentPosition);
-     }
+    /**
+     * 初始化fragment碎片
+     */
+    private void initFragment(Bundle savedInstanceState) {
+        FragmentTransaction _Transaction = getSupportFragmentManager().beginTransaction();
+        int currentPosition = 0;
+        if (savedInstanceState != null) {
+            mNewsFragment = (newsFragment) getSupportFragmentManager().findFragmentByTag("newsFragment");
+            mPhotoFragment = (PhotoFragment) getSupportFragmentManager().findFragmentByTag("photoFragment");
+            mVideoFragment = (videoFragment) getSupportFragmentManager().findFragmentByTag("videoFragment");
+            mCareFragment = (CareFragment) getSupportFragmentManager().findFragmentByTag("careFragment");
+            //程序意外崩溃，再次启动回到保存的上次的位置
+            currentPosition = savedInstanceState.getInt(CommonData.SAVEDINSTANCESTATE_KEY);
 
-    /** 初始化底部导航页 */
-    private  void initTab(){
-        for (int i=0;i<titles.length;i++){
-            mTabEntities.add(new TabEntity(titles[i],mIconSelect[i],mIconUnSelect[i]));
+        } else {
+            mNewsFragment = new newsFragment();
+            mPhotoFragment = new PhotoFragment();
+            mVideoFragment = new videoFragment();
+            mCareFragment = new CareFragment();
+            _Transaction.add(R.id.commentContent, mNewsFragment, "newsFragment");
+            _Transaction.add(R.id.commentContent, mPhotoFragment, "photoFragment");
+            _Transaction.add(R.id.commentContent, mVideoFragment, "videoFragment");
+            _Transaction.add(R.id.commentContent, mCareFragment, "careFragment");
+        }
+        _Transaction.commit();//提交事务
+        switchToFragment(currentPosition);
+        mTabLayout.setCurrentTab(currentPosition);
+    }
+
+    /**
+     *  初始化底部导航页
+     */
+    private void initTab() {
+        for (int i = 0; i < titles.length; i++) {
+            mTabEntities.add(new TabEntity(titles[i], mIconSelect[i], mIconUnSelect[i]));
         }
         mTabLayout.setTabData(mTabEntities);
         mTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
@@ -104,11 +109,13 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    /** 底部导航页 页面切换*/
+    /**
+     * 底部导航页 页面切换
+     */
     private void switchToFragment(int position) {
 
-        FragmentTransaction _FragmentTransaction=getSupportFragmentManager().beginTransaction();
-        switch (position){
+        FragmentTransaction _FragmentTransaction = getSupportFragmentManager().beginTransaction();
+        switch (position) {
             case 0:
                 //显示首页新闻
                 _FragmentTransaction.show(mNewsFragment);
@@ -144,18 +151,18 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-   //跳转入口
-    public static Intent getIntent(Context pContext){
-        Intent _Intent=new Intent(pContext,MainActivity.class);
-        return  _Intent;
+    //跳转入口
+    public static Intent getIntent(Context pContext) {
+        Intent _Intent = new Intent(pContext, MainActivity.class);
+        return _Intent;
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         //程序意外崩溃，保存的上次的位置
-        if (mTabLayout!=null){
-            outState.putInt(CommonData.SAVEDINSTANCESTATE_KEY,mTabLayout.getCurrentTab());
+        if (mTabLayout != null) {
+            outState.putInt(CommonData.SAVEDINSTANCESTATE_KEY, mTabLayout.getCurrentTab());
         }
     }
 }

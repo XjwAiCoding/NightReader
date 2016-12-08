@@ -5,35 +5,47 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.ui.adapter.PageAdapter;
 import com.example.pc.nightreader.ui.fragment.base.BaseFragment;
+import com.example.pc.nightreader.utils.AnimationUtil;
 import com.example.pc.nightreader.widget.ViewFinder;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.pc.nightreader.R.id.frame_column_order;
+
 /**
- * 新闻fragment,由viewpager和tablayout组成
+ *  新闻fragment,由viewpager和tablayout组成
  */
 public class newsFragment extends BaseFragment  implements View.OnClickListener{
+    /** 载体Activity，在onAttach()的时候给其赋值，在其他地方使用，代替getActivity(),防止在线程中使用报异常 */
     AppCompatActivity mActivity;
     View view;
-    TabLayout mTabLayout;
+    TabLayout mTabLayout;//顶部导航栏
     ViewPager mPager;
-    ArrayList<String> mChannleList;
+    ArrayList<String> mChannleList;//频道名集合
     ArrayList<Fragment> mFragmentList;
-    String channle_name[];
-    ImageView mExpend_arrow;
-    public newsFragment() {
-    }
+    String channle_name[];//频道名数组
+    ImageView mExpend_arrow;//旋转箭头
+    FrameLayout mFrame_column_order;//盛装ColumnOrderFragment的视图
+    ColumnOrderFragment mColumnOrderFragment;//栏目顺序定制fragment
+    FrameLayout mFrameTablayout;//顶部导航栏父容器
+    boolean isShowcolumn_order=false;//是否显示栏目顺序fragment
+
+    public newsFragment() {}
 
 
     @Override
@@ -66,6 +78,8 @@ public class newsFragment extends BaseFragment  implements View.OnClickListener{
 
     @Override
     public void initView() {
+        mFrame_column_order=ViewFinder.getView(view, R.id.frame_column_order);
+        mFrameTablayout=ViewFinder.getView(view, R.id.frameTablayout);
         mTabLayout = ViewFinder.getView(view, R.id.tab_title);
         mPager = ViewFinder.getView(view, R.id.viewpager);
         mTabLayout.setupWithViewPager(mPager);
@@ -98,6 +112,130 @@ public class newsFragment extends BaseFragment  implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-       // Toast.makeText(mActivity, "xjw", Toast.LENGTH_SHORT).show();
+        int _Vid = v.getId();
+        if (_Vid == R.id.expandArrow){
+            if (isShowcolumn_order){ //默认为false
+                //隐藏栏目编辑拖拽页面ColumnOrderFragment，箭头发生向下旋转动画
+                hideFragmentColumnOrder();
+
+            }else {
+
+                // 如果为true,显示栏目编辑拖拽页面ColumnOrderFragment，箭头发生向上旋转动画
+                addFragmentColumnOrder();
+
+            }
+        }
+
+    }
+
+    /**
+     * add FragmentColumnOrder :添加栏目顺序fragment
+     */
+    private void addFragmentColumnOrder(){
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                FragmentTransaction _FragmentTransaction = mActivity.getSupportFragmentManager().beginTransaction();
+                if (null == mColumnOrderFragment){
+                     mColumnOrderFragment = ColumnOrderFragment.newInstance();
+                    _FragmentTransaction = _FragmentTransaction.add(frame_column_order, mColumnOrderFragment, ColumnOrderFragment.class.getSimpleName());
+                }else {
+                    _FragmentTransaction.show(mColumnOrderFragment);
+                     showFragmentColumnOrder();
+                }
+                _FragmentTransaction.commit();
+            }
+        });
+
+    }
+    /**
+     *  显示FragmentColumnOrder,方向从上往下
+     */
+    private void showFragmentColumnOrder() {
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // 执行动画
+                ObjectAnimator _ObjectAnimator = ObjectAnimator.ofFloat(frame_column_order, "translationY", -mFrame_column_order.getHeight(), 0f);
+                _ObjectAnimator.setDuration(300);
+                _ObjectAnimator.addListener(new Animator.AnimatorListener() {
+
+                    @Override
+                    public void onAnimationStart(Animator arg0) {
+                        // 栏目顺序fragment显示
+                        mFrame_column_order.setVisibility(View.VISIBLE);
+                       //隐藏标题栏
+                        mFrameTablayout.setVisibility(View.GONE);
+                        // 箭头旋转
+                        AnimationUtil.rotation(mExpend_arrow, 0f, 180f);
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator arg0) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator arg0) {
+                        //显示栏目顺序fragment
+                        isShowcolumn_order=true;
+
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator arg0) {
+
+                    }
+                });
+                _ObjectAnimator.start();
+            }
+        });
+    }
+
+    /**
+     * 隐藏FragmentColumnOrder，从下往上
+     */
+    public void hideFragmentColumnOrder() {
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // 隐藏动画
+                ObjectAnimator _ObjectAnimator = ObjectAnimator.ofFloat(frame_column_order, "translationY", 0f, -mFrame_column_order.getHeight());
+                _ObjectAnimator.setDuration(300);
+                _ObjectAnimator.addListener(new Animator.AnimatorListener() {
+
+                    @Override
+                    public void onAnimationStart(Animator arg0) {
+                        // 旋转
+                        AnimationUtil.rotation(mExpend_arrow, 180f, 360f);
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator arg0) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator arg0) {
+                       //显示标题栏
+                        mFrameTablayout.setVisibility(View.VISIBLE);
+                        // 隐藏栏目顺序fragment
+                        mFrame_column_order.setVisibility(View.GONE);
+                       //不显示栏目顺序fragment
+                        isShowcolumn_order=false;
+
+
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator arg0) {
+
+                    }
+                });
+                _ObjectAnimator.start();
+            }
+        });
     }
 }
