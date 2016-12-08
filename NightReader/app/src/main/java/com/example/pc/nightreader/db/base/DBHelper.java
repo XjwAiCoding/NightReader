@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by yuzhenbei on 2016/9/12.
+ * Created by xujiawei on 2016/9/12.
  */
 public class DBHelper extends SQLiteOpenHelper {
     /** TAG */
@@ -44,7 +44,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //SQL
         pDB.execSQL(DBData.News_COLUMNS.SQL_CREATE_News);
-        pDB.execSQL(DBData.Image_COLUMNS.SQL_CREATE_Image);
+       // pDB.execSQL(DBData.Image_COLUMNS.SQL_CREATE_Image);
 
     }
 

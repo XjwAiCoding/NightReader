@@ -13,8 +13,9 @@ import com.example.pc.nightreader.utils.ImageLoaderUtils;
 
 /**
  * Created by xujiawei on 2016/10/10.
+ * 列表项布局
  */
-//列表项布局
+
 public class NewsItemViewHolder extends RecyclerView.ViewHolder  {
 
     public TextView mTitle;

@@ -19,7 +19,8 @@ public class ImageLoaderUtils {
         Glide.with(context).load(url).placeholder(placeholder)
                 .error(error).crossFade().into(imageView);
      }
-    //三个参数分别是：上下文对象，Imaged对象，图片来源Url
+
+    /**三个参数分别是：上下文对象，Imaged对象，图片来源Url*/
     public static void display(Context context, ImageView imageView, String url) {
         if(imageView == null) {
             throw new IllegalArgumentException("argument error");

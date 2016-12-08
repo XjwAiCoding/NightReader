@@ -116,13 +116,13 @@ public class NewsListFragment extends BaseFragment {
    public void registerListener( final NewsAdapter pAdapter){
       pAdapter.setOnItemClickListener(new OnItemClickListener() {
           @Override
-          public void onItemClick(View view, int position) {
-              News news = pAdapter.getItem(position);
+          public void onItemClick(View view) {
+              News news = pAdapter.getItem();
               //跳转到新闻详情activity
 
-              Intent intent = new Intent(mActivity, DetailActivity.class);
+              Intent intent = DetailActivity.getIntent(mActivity);
               intent.putExtra("news", (Parcelable) news);
-              intent.putExtra("position",position);
+              //intent.putExtra("position",position);
               startActivity(intent);
           }
 
