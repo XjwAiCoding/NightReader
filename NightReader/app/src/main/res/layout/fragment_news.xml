@@ -1,0 +1,63 @@
+<LinearLayout android:orientation="vertical"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context="com.example.pc.nightreader.ui.fragment.newsFragment">
+
+
+    <RelativeLayout
+        android:id="@+id/fragment_new_psts_root"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/expandArrow">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_title"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:fillViewport="false"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabMode="scrollable"
+                app:tabTextColor="@color/colorPrimary">
+            </android.support.design.widget.TabLayout>
+        </FrameLayout>
+
+        <ImageView
+        android:id="@+id/expandArrow"
+        android:layout_width="45dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:scaleType="center"
+        android:src="@mipmap/column_subscribe_expand" />
+
+    </RelativeLayout>
+
+   <!-- <android.support.design.widget.TabLayout
+        android:id="@+id/tab_title"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:fillViewport="false"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/colorPrimary">
+
+    </android.support.design.widget.TabLayout>-->
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>
