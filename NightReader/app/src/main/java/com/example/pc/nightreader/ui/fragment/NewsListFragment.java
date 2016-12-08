@@ -2,7 +2,9 @@ package com.example.pc.nightreader.ui.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +19,13 @@ import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.entity.News;
 import com.example.pc.nightreader.logic.async.AsyncNews;
 import com.example.pc.nightreader.logic.listener.KLoadListener;
+import com.example.pc.nightreader.logic.listener.OnItemClickListener;
+import com.example.pc.nightreader.ui.activity.DetailActivity;
 import com.example.pc.nightreader.ui.adapter.NewsAdapter;
 import com.example.pc.nightreader.ui.fragment.base.BaseFragment;
 import com.example.pc.nightreader.widget.ViewFinder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,8 +37,8 @@ public class NewsListFragment extends BaseFragment {
     View mRootView;
     AppCompatActivity mActivity;//载体activity
     private LinearLayoutManager mLinearLayoutManager;//视图管理器，// 与recyclerview搭配使用
-    private int mPosition;
-
+     int mPosition;
+     List<News> mList=new ArrayList<>();
     public NewsListFragment() {
 
     }
@@ -90,8 +95,9 @@ public class NewsListFragment extends BaseFragment {
            @Override
            public void onSuccess(List<News> pData) {
                //传递数据
-               mRecyclerView.setAdapter(new NewsAdapter(mActivity,pData));
-
+              NewsAdapter _Adapter= new NewsAdapter(mActivity,pData);
+              mRecyclerView.setAdapter(_Adapter);
+               registerListener(_Adapter);
            }
 
            @Override
@@ -106,6 +112,20 @@ public class NewsListFragment extends BaseFragment {
        }).execute();
     }
 
+   //adapter点击事件
+   public void registerListener( final NewsAdapter pAdapter){
+      pAdapter.setOnItemClickListener(new OnItemClickListener() {
+          @Override
+          public void onItemClick(View view, int position) {
+              News news = pAdapter.getItem(position);
+              //跳转到新闻详情activity
 
+              Intent intent = new Intent(mActivity, DetailActivity.class);
+              intent.putExtra("news", (Parcelable) news);
+              intent.putExtra("position",position);
+              startActivity(intent);
+          }
 
+    });
+   }
 }

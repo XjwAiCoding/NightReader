@@ -15,7 +15,7 @@ import com.example.pc.nightreader.utils.ImageLoaderUtils;
  * Created by xujiawei on 2016/10/10.
  */
 //列表项布局
-public class NewsItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class NewsItemViewHolder extends RecyclerView.ViewHolder  {
 
     public TextView mTitle;
     public ImageView mNewsImg;
@@ -26,16 +26,11 @@ public class NewsItemViewHolder extends RecyclerView.ViewHolder implements View.
 
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
 
     public void initView() {
         mTitle = (TextView) itemView.findViewById(R.id.tvTitle);
         mNewsImg = (ImageView) itemView.findViewById(R.id.ivNews);
 
-        itemView.setOnClickListener(this);
     }
 
       public NewsItemViewHolder setImage(Context pContext, News pNews){
