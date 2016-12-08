@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 
 import com.example.pc.nightreader.R;
-import com.example.pc.nightreader.db.CommonData;
+import com.example.pc.nightreader.db.base.CommonData;
 import com.example.pc.nightreader.entity.TabEntity;
 import com.example.pc.nightreader.ui.activity.base.BaseActivity;
 import com.example.pc.nightreader.ui.fragment.CareFragment;

@@ -1,7 +1,7 @@
 package com.example.pc.nightreader.db.base;
 
 /**
- * Created by yuzhenbei on 2016/9/12.
+ * Created by xujiawei  on 2016/9/12.
  */
 public class DBData {
     /* 数据库 */
