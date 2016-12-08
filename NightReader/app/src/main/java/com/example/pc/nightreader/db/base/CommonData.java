@@ -1,4 +1,4 @@
-package com.example.pc.nightreader.db;
+package com.example.pc.nightreader.db.base;
 
 import com.example.pc.nightreader.R;
 
