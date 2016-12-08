@@ -23,7 +23,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<News> mData=new ArrayList<>();
     public NewsAdapter(Context context, List<News> pData) {
         this.mContext = context;
-        this.mData=pData;
+        mData.addAll(pData);
     }
 
     @Override

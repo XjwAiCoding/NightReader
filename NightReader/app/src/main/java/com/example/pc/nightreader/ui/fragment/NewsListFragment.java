@@ -21,7 +21,6 @@ import com.example.pc.nightreader.ui.adapter.NewsAdapter;
 import com.example.pc.nightreader.ui.fragment.base.BaseFragment;
 import com.example.pc.nightreader.widget.ViewFinder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +33,7 @@ public class NewsListFragment extends BaseFragment {
     AppCompatActivity mActivity;//载体activity
     private LinearLayoutManager mLinearLayoutManager;//视图管理器，// 与recyclerview搭配使用
     private int mPosition;
-     ArrayList<News> mList;
+
     public NewsListFragment() {
 
     }
@@ -65,8 +64,9 @@ public class NewsListFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_news_list, container, false);
-        initData();
+
         initView();
+        initData();
         return mRootView;
     }
 
@@ -81,8 +81,7 @@ public class NewsListFragment extends BaseFragment {
         mLinearLayoutManager=new LinearLayoutManager(mActivity);//获取视图管理器实例对象
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
-         //设置适配器
-         mRecyclerView.setAdapter(new NewsAdapter(mActivity,mList));
+
     }
 
     @Override
@@ -90,8 +89,8 @@ public class NewsListFragment extends BaseFragment {
        new AsyncNews(mActivity, new KLoadListener<List<News>>() {
            @Override
            public void onSuccess(List<News> pData) {
-              mList=new ArrayList<>();
-               mList.addAll(pData);
+               //传递数据
+               mRecyclerView.setAdapter(new NewsAdapter(mActivity,pData));
 
            }
 
