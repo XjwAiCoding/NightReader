@@ -21,10 +21,10 @@ import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
-    private OnItemClickListener mOnItemClickListener;//点击事件接口
+    static   OnItemClickListener mOnItemClickListener;//点击事件接口
     private List<News> mData = new ArrayList<>();
     View mRootView;
-    News mNews;
+    int mPosition;
     public NewsAdapter(Context context, List<News> pData) {
         this.mContext = context;
         mData.addAll(pData);
@@ -34,27 +34,36 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent,final int viewType) {
         mRootView = LayoutInflater.from(mContext).inflate(R.layout.item_news, parent, false);
         NewsItemViewHolder _holder = new NewsItemViewHolder(mRootView);
-        mRootView.setOnClickListener(new View.OnClickListener() {
+      /*  mRootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mOnItemClickListener.onItemClick(view);
+                mOnItemClickListener.onItemClick(view,mPosition);
             }
-        });
+        });*/
         return _holder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof NewsItemViewHolder) {
-            mNews = mData.get(position);
+             News mNews = mData.get(position);
             //加载图片和标题
             ((NewsItemViewHolder) holder).setTitle(mContext, mNews).setImage(mContext, mNews);
+            if (mOnItemClickListener!=null){
+                ((NewsItemViewHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mOnItemClickListener.onItemClick(v,position);
+                    }
+                });
+            }
         }
 
     }
 
     @Override
     public int getItemViewType(int position) {
+        mPosition=position;
         return position;
     }
 
@@ -63,8 +72,8 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return mData == null ? 0 : mData.size();
     }
 
-    public News getItem() {
-        return mData == null ? null : mNews;
+    public News getItem( int position) {
+        return mData == null ? null : mData.get(position);
     }
 
 

@@ -43,4 +43,6 @@ public class NewsItemViewHolder extends RecyclerView.ViewHolder  {
           mTitle.setText(pNews.getName());
         return this;
     }
+
+
 }
