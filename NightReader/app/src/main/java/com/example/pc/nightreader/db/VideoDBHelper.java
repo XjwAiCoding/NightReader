@@ -43,10 +43,10 @@ public class VideoDBHelper {
                     for(Video _Video : pVideoList) {
                         String _Title = _Video.getTitle();
                         String _CoverImg= _Video.getCoverImg();
-                        String _PlayCount = _Video.getPlayCount();
                         String _Url =_Video.getUrl();
                         String _Videosource=_Video.getVideosource();
-                        _CV=toContentValues(_CV,_Title,_CoverImg,_PlayCount,_Url,_Videosource);
+                        String _PlayCount = _Video.getPlayCount();
+                        _CV=toContentValues(_CV,_Title,_CoverImg,_Url,_Videosource,_PlayCount);
                         if (isExist(_DB, _Title)) {
                             String _selection = DBData.Video_COLUMNS.TITLE + "=?";
                             String[] _whereArgs = new String[]{_Title};
@@ -67,7 +67,7 @@ public class VideoDBHelper {
         }
         return _result;
     }
-    /** 查询所有news */
+    /** 查询所有Video */
     public   List<Video> queryAllVideo(){
         List<Video> _VideoList=new ArrayList<>();
         Video _Video;
@@ -86,31 +86,28 @@ public class VideoDBHelper {
         return _VideoList;
     }
 
-
-
-    /** 封装news */
+    /** 封装Video */
     public Video toVideo(Cursor pCursor){
         Video _Video=new Video();
         if(null!=pCursor&&pCursor.getCount()>0) {
-
             _Video.setTitle(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.TITLE)));
-            _Video.setVideosource(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.VIDEOSOURCE)));
-            _Video.setPlayCount(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.PLAYCOUNT)));
             _Video.setCoverImg(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.COVERIMG)));
             _Video.setUrl(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.URL)));
+            _Video.setVideosource(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.VIDEOSOURCE)));
+            _Video.setPlayCount(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.PLAYCOUNT)));
+
         }
         return _Video;
     }
 
     /** 获得ContentValues */
-    private ContentValues toContentValues(ContentValues pCV, String pTitle, String pCoverImg,String pPlayCount,String pUrl, String pVideosource ){
+    private ContentValues toContentValues(ContentValues pCV, String pTitle, String pCoverImg,String pUrl, String pVideosource,String pPlayCount ){
         pCV.clear();
         pCV.put(DBData.Video_COLUMNS.TITLE, pTitle);
         pCV.put(DBData.Video_COLUMNS.COVERIMG, pCoverImg);
-        pCV.put(DBData.Video_COLUMNS.PLAYCOUNT, pPlayCount);
         pCV.put(DBData.Video_COLUMNS.URL, pUrl);
         pCV.put(DBData.Video_COLUMNS.VIDEOSOURCE, pVideosource);
-
+        pCV.put(DBData.Video_COLUMNS.PLAYCOUNT, pPlayCount);
         return pCV;
     }
 

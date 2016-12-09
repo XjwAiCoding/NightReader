@@ -22,6 +22,8 @@ import com.example.pc.nightreader.widget.ViewFinder;
 
 import java.util.List;
 
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+
 /**
  *
  */
@@ -53,7 +55,7 @@ public class videoFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         mRootView=inflater.inflate(R.layout.fragment_video, container, false);
         initView();
-       // initData();
+        initData();
         return  mRootView;
     }
 
@@ -95,5 +97,6 @@ public class videoFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
+        JCVideoPlayer.releaseAllVideos();
     }
 }

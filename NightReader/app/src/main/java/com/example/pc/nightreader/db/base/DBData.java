@@ -4,7 +4,7 @@ package com.example.pc.nightreader.db.base;
  * Created by xujiawei  on 2016/9/12.
  */
 public class DBData {
-    /* 数据库 */
+
     /** SDK 本地数据库名 */
     public static final String DB_NAME = "News_db";
     /** SDK 本地数据库的版本号,用于数据升级 */
@@ -62,22 +62,24 @@ public class DBData {
         public static final String ID="_id";
         /**  标题*/
         public static final String TITLE="title";
+        /**  视频缩略图 */
+        public static final String COVERIMG="coverimg";
         /**  视频地址 */
         public static final String URL="url";
-        public static final String COVERIMG="coverimg";
-        public static final String PLAYCOUNT="playcount";
+        /**  视频来源 */
         public static final String VIDEOSOURCE="videosource";
-
+        /** 播放次数 */
+        public static final String PLAYCOUNT="playcount";
 
         /** 创建SQL表 */
         public static final String SQL_CREATE_VIDEO="CREATE TABLE IF NOT EXISTS "
                 +TABLE_NAME+"("
                 +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +TITLE+" VARCHAR NOT NULL UNIQUE,"
-                +URL+" VARCHAR NOT NULL)"
                 +COVERIMG+" VARCHAR NOT NULL)"
-                +PLAYCOUNT+" VARCHAR NOT NULL)"
-                +VIDEOSOURCE+" VARCHAR NOT NULL)";
+                +URL+" VARCHAR NOT NULL)"
+                +VIDEOSOURCE+" VARCHAR NOT NULL)"
+                +PLAYCOUNT+" VARCHAR NOT NULL)" ;
 
     }
 
