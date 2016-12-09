@@ -23,8 +23,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public PhotoAdapter() {
     }
 
-    public PhotoAdapter(List<Photo> mList, Context pContext) {
-        this.mList = mList;
+    public PhotoAdapter(List<Photo> pList, Context pContext) {
+        mList.addAll(pList);
         mContext=pContext;
     }
 

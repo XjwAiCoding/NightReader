@@ -42,6 +42,7 @@ public class PhotoDBHelper {
                         String _date = _Photo.getPublicDate();
                         String _URL = _Photo.getUrl();
                         _CV=toContentValues(_CV,_date,_URL);
+                        //？？
                         if (isExist(_DB, _date)) {
                             String _selection = DBData.Image_COLUMNS.DESC + "=?";
                             String[] _whereArgs = new String[]{_date};

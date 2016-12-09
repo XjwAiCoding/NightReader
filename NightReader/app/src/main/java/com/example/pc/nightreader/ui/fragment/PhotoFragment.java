@@ -59,8 +59,8 @@ public class PhotoFragment extends BaseFragment {
 
     @Override
     public void initView() {
-        mRecyclerView= ViewFinder.getView(mActivity, R.id.imagerecyclerView);
-        mRefreshLayout=ViewFinder.getView(mActivity, R.id.imageRefreshLayout);
+        mRecyclerView= ViewFinder.getView(mRootView, R.id.imagerecyclerView);
+        mRefreshLayout=ViewFinder.getView(mRootView, R.id.imageRefreshLayout);
         //设置刷新时的动画颜色，可以设置4个
         mRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark, R.color.gray);
         mRecyclerView.setHasFixedSize(true);//固定recyclerView的大小，被用于自身的优化
