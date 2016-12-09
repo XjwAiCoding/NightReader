@@ -74,10 +74,10 @@ public class MainActivity extends BaseActivity {
             currentPosition = savedInstanceState.getInt(CommonData.SAVEDINSTANCESTATE_KEY);
 
         } else {
-            mNewsFragment = new newsFragment();
-            mPhotoFragment = new PhotoFragment();
-            mVideoFragment = new videoFragment();
-            mCareFragment = new CareFragment();
+            mNewsFragment = newsFragment.newInstance();
+            mPhotoFragment = PhotoFragment.newInstance();
+            mVideoFragment = videoFragment.newInstance();
+            mCareFragment =  CareFragment.newInstance();
             _Transaction.add(R.id.commentContent, mNewsFragment, "newsFragment");
             _Transaction.add(R.id.commentContent, mPhotoFragment, "photoFragment");
             _Transaction.add(R.id.commentContent, mVideoFragment, "videoFragment");

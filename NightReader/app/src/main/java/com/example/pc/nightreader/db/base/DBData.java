@@ -37,20 +37,20 @@ public class DBData {
     /**Image表 */
     public static final class Image_COLUMNS{
         /**  表名 */
-        public static final String TABLE_NAME="Image";
+        public static final String TABLE_NAME="Photo";
         /**  ID */
         public static final String ID="_id";
-        /**  标题 */
-        public static final String NAME="name";
+        /**  时间 */
+        public static final String DESC="desc";
 
         /**  大图地址 */
-        public static final String PICBIG="picBig";
+        public static final String URL="url";
         /** 创建SQL表 */
         public static final String SQL_CREATE_Image="CREATE TABLE IF NOT EXISTS "
                 +TABLE_NAME+"("
                 +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +NAME+" VARCHAR NOT NULL UNIQUE,"
-                +PICBIG+" VARCHAR NOT NULL)";
+                +DESC+" VARCHAR NOT NULL UNIQUE,"
+                +URL+" VARCHAR NOT NULL)";
 
     }
     /* ====== SQL END =======*/

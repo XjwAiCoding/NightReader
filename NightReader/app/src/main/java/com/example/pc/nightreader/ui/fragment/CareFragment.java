@@ -10,13 +10,17 @@ import android.view.ViewGroup;
 import com.example.pc.nightreader.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ *
  */
 public class CareFragment extends Fragment {
 
 
     public CareFragment() {
-        // Required empty public constructor
+
+    }
+    public static  CareFragment newInstance(){
+        CareFragment _Fragment=new CareFragment();
+        return  _Fragment;
     }
 
 

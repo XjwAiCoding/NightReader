@@ -44,7 +44,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //SQL
         pDB.execSQL(DBData.News_COLUMNS.SQL_CREATE_News);
-       // pDB.execSQL(DBData.Image_COLUMNS.SQL_CREATE_Image);
+        pDB.execSQL(DBData.Image_COLUMNS.SQL_CREATE_Image);
 
     }
 

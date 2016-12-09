@@ -18,6 +18,10 @@ public class videoFragment extends Fragment {
     public videoFragment() {
         // Required empty public constructor
     }
+    public static videoFragment newInstance(){
+        videoFragment _Fragment=new videoFragment();
+        return  _Fragment;
+    }
 
 
     @Override

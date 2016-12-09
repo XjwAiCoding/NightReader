@@ -47,6 +47,10 @@ public class newsFragment extends BaseFragment  implements View.OnClickListener{
 
     public newsFragment() {}
 
+    public  static  newsFragment newInstance(){
+        newsFragment _Fragment=new newsFragment();
+        return  _Fragment;
+    }
 
     @Override
     public void onAttach(Context context) {

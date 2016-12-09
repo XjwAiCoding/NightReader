@@ -26,7 +26,6 @@ import com.example.pc.nightreader.ui.adapter.NewsAdapter;
 import com.example.pc.nightreader.ui.fragment.base.BaseFragment;
 import com.example.pc.nightreader.widget.ViewFinder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,11 +34,10 @@ import java.util.List;
 public class NewsListFragment extends BaseFragment {
     private SwipeRefreshLayout mRefreshLayout;
     private RecyclerView mRecyclerView;
-    View mRootView;
-    AppCompatActivity mActivity;//载体activity
+    private View mRootView;
+    private  AppCompatActivity mActivity;//载体activity
     private LinearLayoutManager mLinearLayoutManager;//视图管理器，// 与recyclerview搭配使用
-     int mPosition;
-     List<News> mList=new ArrayList<>();
+    private int mPosition;
     public NewsListFragment() {
 
     }
