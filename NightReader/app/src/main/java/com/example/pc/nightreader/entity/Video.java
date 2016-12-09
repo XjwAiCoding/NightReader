@@ -13,8 +13,6 @@ public class Video implements Parcelable {
     private String videosource;//视频来源
     private String playCount;//播放次数
 
-
-
     public String getTitle() {
         return title;
     }
@@ -22,10 +20,6 @@ public class Video implements Parcelable {
     public void setTitle(String title) {
         this.title = title;
     }
-
-
-
-
 
     public String getPlayCount() {
         return playCount;
