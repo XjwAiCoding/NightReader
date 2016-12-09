@@ -32,11 +32,11 @@ import java.util.List;
  * 新闻列表fragment
  */
 public class NewsListFragment extends BaseFragment {
-    private SwipeRefreshLayout mRefreshLayout;
+    private SwipeRefreshLayout mRefreshLayout;//下拉刷新组件
     private RecyclerView mRecyclerView;
     private View mRootView;
     private  AppCompatActivity mActivity;//载体activity
-    private LinearLayoutManager mLinearLayoutManager;//视图管理器，// 与recyclerview搭配使用
+    private LinearLayoutManager mLinearLayoutManager;//视图管理器，与recyclerview搭配使用
     private int mPosition;
     public NewsListFragment() {
 

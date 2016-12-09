@@ -34,12 +34,20 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent,final int viewType) {
         mRootView = LayoutInflater.from(mContext).inflate(R.layout.item_news, parent, false);
         NewsItemViewHolder _holder = new NewsItemViewHolder(mRootView);
-      /*  mRootView.setOnClickListener(new View.OnClickListener() {
+        _holder.setOnItemClickListener(new NewsItemViewHolder.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                mOnItemClickListener.onItemClick(view,mPosition);
+            public void onItemClickListener(View itemView, int pPosition) {
+                mOnItemClickListener.onItemClick(itemView,pPosition);
             }
-        });*/
+        });
+        /*if(mOnItemClickListener!=null){
+           mRootView.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   mOnItemClickListener.onItemClick(view,mPosition);
+               }
+           });
+       }*/
         return _holder;
     }
 
@@ -49,14 +57,14 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
              News mNews = mData.get(position);
             //加载图片和标题
             ((NewsItemViewHolder) holder).setTitle(mContext, mNews).setImage(mContext, mNews);
-            if (mOnItemClickListener!=null){
+            /*if (mOnItemClickListener!=null){
                 ((NewsItemViewHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mOnItemClickListener.onItemClick(v,position);
                     }
                 });
-            }
+            }*/
         }
 
     }

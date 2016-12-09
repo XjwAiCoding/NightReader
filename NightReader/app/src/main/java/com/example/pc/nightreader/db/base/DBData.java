@@ -43,7 +43,7 @@ public class DBData {
         /**  时间 */
         public static final String DESC="desc";
 
-        /**  大图地址 */
+        /**  图地址 */
         public static final String URL="url";
         /** 创建SQL表 */
         public static final String SQL_CREATE_Image="CREATE TABLE IF NOT EXISTS "
@@ -53,6 +53,35 @@ public class DBData {
                 +URL+" VARCHAR NOT NULL)";
 
     }
+
+    /**video表 */
+    public static final class Video_COLUMNS{
+        /**  表名 */
+        public static final String TABLE_NAME="Video";
+        /**  ID */
+        public static final String ID="_id";
+        /**  标题*/
+        public static final String TITLE="title";
+        /**  视频地址 */
+        public static final String URL="url";
+        public static final String COVERIMG="coverimg";
+        public static final String PLAYCOUNT="playcount";
+        public static final String VIDEOSOURCE="videosource";
+
+
+        /** 创建SQL表 */
+        public static final String SQL_CREATE_VIDEO="CREATE TABLE IF NOT EXISTS "
+                +TABLE_NAME+"("
+                +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
+                +TITLE+" VARCHAR NOT NULL UNIQUE,"
+                +URL+" VARCHAR NOT NULL)"
+                +COVERIMG+" VARCHAR NOT NULL)"
+                +PLAYCOUNT+" VARCHAR NOT NULL)"
+                +VIDEOSOURCE+" VARCHAR NOT NULL)";
+
+    }
+
+
     /* ====== SQL END =======*/
 
 }

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.entity.News;
@@ -16,14 +17,23 @@ import com.example.pc.nightreader.utils.ImageLoaderUtils;
  * 列表项布局
  */
 
-public class NewsItemViewHolder extends RecyclerView.ViewHolder  {
+public class NewsItemViewHolder extends RecyclerView.ViewHolder{
 
     public TextView mTitle;
     public ImageView mNewsImg;
+    protected  OnItemClickListener mOnItemClickListener;
 
-    public NewsItemViewHolder(View itemView) {
+    public NewsItemViewHolder(final View itemView) {
         super(itemView);
+
         initView();
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.onItemClickListener(v, getAdapterPosition());
+                Toast.makeText(v.getContext(), "zzzzz" + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -44,5 +54,11 @@ public class NewsItemViewHolder extends RecyclerView.ViewHolder  {
         return this;
     }
 
+    public void setOnItemClickListener(OnItemClickListener pOnItemClickListener) {
+        this.mOnItemClickListener = pOnItemClickListener;
+    }
 
+    public interface OnItemClickListener{
+        void onItemClickListener(View itemView, int pPosition);
+    }
 }
