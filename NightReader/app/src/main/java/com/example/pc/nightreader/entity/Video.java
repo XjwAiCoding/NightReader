@@ -9,7 +9,6 @@ import android.os.Parcelable;
 
 public class Video implements Parcelable {
     private String title;//标题
-    private String coverImg;//缩略图
     private String url;       //视频地址
     private String videosource;//视频来源
     private String playCount;//播放次数
@@ -24,13 +23,9 @@ public class Video implements Parcelable {
         this.title = title;
     }
 
-    public String getCoverImg() {
-        return coverImg;
-    }
 
-    public void setCoverImg(String coverImg) {
-        this.coverImg = coverImg;
-    }
+
+
 
     public String getPlayCount() {
         return playCount;
@@ -65,7 +60,6 @@ public class Video implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.title);
-        dest.writeString(this.coverImg);
         dest.writeString(this.playCount);
         dest.writeString(this.url);
         dest.writeString(this.videosource);
@@ -76,7 +70,6 @@ public class Video implements Parcelable {
 
     protected Video(Parcel in) {
         this.title = in.readString();
-        this.coverImg = in.readString();
         this.playCount = in.readString();
         this.url = in.readString();
         this.videosource = in.readString();

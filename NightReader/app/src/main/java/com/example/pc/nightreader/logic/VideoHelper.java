@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class VideoHelper {
 
-    private  static  final String url= "http://c.3g.163.com/nc/video/list/V9LG4CHOR/n/10-10.html";
+    private  static  final String url= "http://gank.io/api/data/休息视频/20/2";
 
     public static void initVideoData(final Context pContext){
 

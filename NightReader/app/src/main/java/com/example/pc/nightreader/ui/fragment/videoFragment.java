@@ -25,8 +25,8 @@ import java.util.List;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
- *
- */
+ *视频
+ * */
 public class videoFragment extends BaseFragment {
      private View mRootView;
      private AppCompatActivity mActivity;//载体activity
@@ -97,6 +97,7 @@ public class videoFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
+        //暂停播放视频
         JCVideoPlayer.releaseAllVideos();
     }
 }

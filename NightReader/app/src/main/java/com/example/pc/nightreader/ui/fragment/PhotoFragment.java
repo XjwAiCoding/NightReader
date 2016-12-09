@@ -23,8 +23,8 @@ import com.example.pc.nightreader.widget.ViewFinder;
 import java.util.List;
 
 /**
- *
- */
+ *图片
+ **/
 public class PhotoFragment extends BaseFragment {
     private AppCompatActivity mActivity;//载体activity
     private View mRootView;

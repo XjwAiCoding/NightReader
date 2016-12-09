@@ -76,9 +76,8 @@ public class DBData {
                 +TABLE_NAME+"("
                 +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +TITLE+" VARCHAR NOT NULL UNIQUE,"
-                +COVERIMG+" VARCHAR NOT NULL)"
-                +URL+" VARCHAR NOT NULL)"
-                +VIDEOSOURCE+" VARCHAR NOT NULL)"
+                +URL+" VARCHAR NOT NULL,"
+                +VIDEOSOURCE+" VARCHAR NOT NULL,"
                 +PLAYCOUNT+" VARCHAR NOT NULL)" ;
 
     }
