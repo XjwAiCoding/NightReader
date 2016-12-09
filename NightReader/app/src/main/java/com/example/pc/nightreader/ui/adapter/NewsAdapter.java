@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by xujiawei on 2016/7/18.
- * recyclerView适配器
+ * 新闻适配器
  */
 
 public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -33,21 +33,16 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent,final int viewType) {
         mRootView = LayoutInflater.from(mContext).inflate(R.layout.item_news, parent, false);
-        NewsItemViewHolder _holder = new NewsItemViewHolder(mRootView);
-        _holder.setOnItemClickListener(new NewsItemViewHolder.OnItemClickListener() {
-            @Override
-            public void onItemClickListener(View itemView, int pPosition) {
-                mOnItemClickListener.onItemClick(itemView,pPosition);
-            }
-        });
-        /*if(mOnItemClickListener!=null){
+       final  NewsItemViewHolder _holder = new NewsItemViewHolder(mRootView);
+
+       if(mOnItemClickListener!=null){
            mRootView.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
-                   mOnItemClickListener.onItemClick(view,mPosition);
+                   mOnItemClickListener.onItemClick(view,_holder.getAdapterPosition());
                }
            });
-       }*/
+       }
         return _holder;
     }
 
@@ -57,14 +52,6 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
              News mNews = mData.get(position);
             //加载图片和标题
             ((NewsItemViewHolder) holder).setTitle(mContext, mNews).setImage(mContext, mNews);
-            /*if (mOnItemClickListener!=null){
-                ((NewsItemViewHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mOnItemClickListener.onItemClick(v,position);
-                    }
-                });
-            }*/
         }
 
     }

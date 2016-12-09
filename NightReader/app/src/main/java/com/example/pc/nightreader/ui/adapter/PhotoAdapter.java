@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by xujiawei on 2016/12/9.
+ * 图片适配器
  */
 
 public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

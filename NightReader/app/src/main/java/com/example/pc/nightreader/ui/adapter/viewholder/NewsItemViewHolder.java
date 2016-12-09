@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.entity.News;
@@ -21,19 +20,12 @@ public class NewsItemViewHolder extends RecyclerView.ViewHolder{
 
     public TextView mTitle;
     public ImageView mNewsImg;
-    protected  OnItemClickListener mOnItemClickListener;
 
     public NewsItemViewHolder(final View itemView) {
         super(itemView);
 
+
         initView();
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOnItemClickListener.onItemClickListener(v, getAdapterPosition());
-                Toast.makeText(v.getContext(), "zzzzz" + getAdapterPosition(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
@@ -52,13 +44,5 @@ public class NewsItemViewHolder extends RecyclerView.ViewHolder{
      public NewsItemViewHolder setTitle(Context pContext, News pNews){
           mTitle.setText(pNews.getName());
         return this;
-    }
-
-    public void setOnItemClickListener(OnItemClickListener pOnItemClickListener) {
-        this.mOnItemClickListener = pOnItemClickListener;
-    }
-
-    public interface OnItemClickListener{
-        void onItemClickListener(View itemView, int pPosition);
     }
 }

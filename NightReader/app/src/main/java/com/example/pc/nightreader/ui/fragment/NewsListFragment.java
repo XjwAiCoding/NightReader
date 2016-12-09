@@ -118,7 +118,6 @@ public class NewsListFragment extends BaseFragment {
           public void onItemClick(View view,int position) {
               News news = pAdapter.getItem(position);
               //跳转到新闻详情activity
-
               Intent intent = DetailActivity.getIntent(mActivity);
               intent.putExtra("news", (Parcelable) news);
               intent.putExtra("position",position);

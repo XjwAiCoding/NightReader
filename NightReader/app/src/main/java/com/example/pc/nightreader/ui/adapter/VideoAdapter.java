@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Created by xujiawei on 2016/12/9.
+ * 视频适配器
  */
 
 public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
