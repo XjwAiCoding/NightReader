@@ -28,9 +28,9 @@ public class DBData {
         public static final String SQL_CREATE_News="CREATE TABLE IF NOT EXISTS "
                 +TABLE_NAME+"("
                 +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +NAME+" VARCHAR NOT NULL UNIQUE,"
-                +DESCRIPTION+" INTEGER NOT NULL,"
-                +PICSMALL+" VARCHAR NOT NULL)";
+                +NAME+" VARCHAR,"
+                +DESCRIPTION+" INTEGER,"
+                +PICSMALL+" VARCHAR)";
 
     }
 
@@ -49,8 +49,8 @@ public class DBData {
         public static final String SQL_CREATE_Image="CREATE TABLE IF NOT EXISTS "
                 +TABLE_NAME+"("
                 +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +DESC+" VARCHAR NOT NULL UNIQUE,"
-                +URL+" VARCHAR NOT NULL)";
+                +DESC+" VARCHAR,"
+                +URL+" VARCHAR)";
 
     }
 
@@ -75,10 +75,10 @@ public class DBData {
         public static final String SQL_CREATE_VIDEO="CREATE TABLE IF NOT EXISTS "
                 +TABLE_NAME+"("
                 +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +TITLE+" VARCHAR NOT NULL UNIQUE,"
-                +URL+" VARCHAR NOT NULL,"
-                +VIDEOSOURCE+" VARCHAR NOT NULL,"
-                +PLAYCOUNT+" VARCHAR NOT NULL)" ;
+                +TITLE+" VARCHAR,"
+                +URL+" VARCHAR,"
+                +VIDEOSOURCE+" VARCHAR,"
+                +PLAYCOUNT+" VARCHAR)" ;
 
     }
 

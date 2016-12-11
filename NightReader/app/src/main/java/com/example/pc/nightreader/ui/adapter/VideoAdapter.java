@@ -27,7 +27,7 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     public VideoAdapter(Context pContext, List<Video> pList) {
-        mContext = mContext;
+        mContext = pContext;
         this.mList.addAll(pList);
     }
 

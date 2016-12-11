@@ -36,7 +36,7 @@ public class VideoItemViewHolder extends RecyclerView.ViewHolder {
 
     //设置视频标题，缩略图和视频地址
     public VideoItemViewHolder setVideo(Context pContext, Video pVideo){
-        videoController.setUp(pVideo.getUrl(),null, pVideo.getTitle());
+        videoController.setUp(pVideo.getUrl(),"http://p.qpic.cn/videoyun/0/2449_ded7b566b37911e5942f0b208e48548d_2/640", pVideo.getTitle());
         return this;
     }
 
