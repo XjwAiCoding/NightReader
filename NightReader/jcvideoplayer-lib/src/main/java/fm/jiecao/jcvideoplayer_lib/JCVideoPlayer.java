@@ -89,7 +89,7 @@ public class JCVideoPlayer extends FrameLayout implements View.OnClickListener, 
 
     private static ImageView.ScaleType speScalType = null;
 
-    public JCVideoPlayer(Context context, AttributeSet attrs) {
+    public   JCVideoPlayer(Context context, AttributeSet attrs) {
         super(context, attrs);
         uuid = UUID.randomUUID().toString();
         init(context);

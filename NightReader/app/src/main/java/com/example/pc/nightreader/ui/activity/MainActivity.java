@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-
 import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.db.base.CommonData;
 import com.example.pc.nightreader.entity.TabEntity;
@@ -17,7 +16,6 @@ import com.example.pc.nightreader.widget.ViewFinder;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
