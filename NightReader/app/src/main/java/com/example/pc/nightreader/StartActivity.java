@@ -35,7 +35,7 @@ public class StartActivity extends BaseActivity {
                 Intent _Intent= MainActivity.getIntent(StartActivity.this);
                 startActivity(_Intent);
                 finish();
-                overridePendingTransition( 0,R.anim.slideout);
+               // overridePendingTransition( 0,R.anim.slideout);
 
             }
         },2000);
