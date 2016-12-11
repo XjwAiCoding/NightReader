@@ -8,6 +8,7 @@ import android.os.Parcelable;
  */
 
 public class Video implements Parcelable {
+
     private String title;//标题
     private String url;       //视频地址
     private String videosource;//视频来源

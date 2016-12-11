@@ -11,13 +11,15 @@ import com.example.pc.nightreader.widget.ViewFinder;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
+
+
 /**
  * Created by xujiawei on 2016/12/9.
  */
 
 public class VideoItemViewHolder extends RecyclerView.ViewHolder {
 
-    public JCVideoPlayer videoController;
+    public JCVideoPlayer videoController;//播放器
     public  TextView  mSource;
     public TextView mCount;
 
