@@ -42,7 +42,9 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof VideoItemViewHolder) {
             //设置视频相关属性
-            ((VideoItemViewHolder) holder).setVideo(mContext, mList.get(position)).setSource(mContext, mList.get(position)).setCount(mContext, mList.get(position));
+            ((VideoItemViewHolder) holder).setSource(mContext, mList.get(position))
+                    .setCount(mContext, mList.get(position))
+                    .setVideo(mContext, mList.get(position));
         }
     }
 
