@@ -2,7 +2,9 @@ package com.example.pc.nightreader.ui.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -16,6 +18,8 @@ import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.entity.Photo;
 import com.example.pc.nightreader.logic.async.AsyncPhoto;
 import com.example.pc.nightreader.logic.listener.KLoadListener;
+import com.example.pc.nightreader.logic.listener.OnItemClickListener;
+import com.example.pc.nightreader.ui.activity.PhotoDetainActivity;
 import com.example.pc.nightreader.ui.adapter.PhotoAdapter;
 import com.example.pc.nightreader.ui.fragment.base.BaseFragment;
 import com.example.pc.nightreader.widget.ViewFinder;
@@ -77,6 +81,7 @@ public class PhotoFragment extends BaseFragment {
             public void onSuccess(List<Photo> pData) {
                 PhotoAdapter _adapter=new PhotoAdapter(pData,mActivity);
                 mRecyclerView.setAdapter(_adapter);
+                registerListener(_adapter,pData);
             }
 
             @Override
@@ -90,7 +95,21 @@ public class PhotoFragment extends BaseFragment {
             }
         }).execute();
 
+    }
 
+    /**注册点击事件*/
+    public  void registerListener( PhotoAdapter pAdapter, final List<Photo> photoList){
+        pAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+                //跳转到图片详情activity
+                Intent intent = PhotoDetainActivity.getIntent(mActivity);
+                intent.putExtra("photoList", (Parcelable) photoList);
+                intent.putExtra("position",position);
+                startActivity(intent);
+            }
+        });
     }
 
 }

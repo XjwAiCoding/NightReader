@@ -21,10 +21,9 @@ import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
-    static   OnItemClickListener mOnItemClickListener;//点击事件接口
+    private OnItemClickListener mOnItemClickListener;//点击事件接口
     private List<News> mData = new ArrayList<>();
-    View mRootView;
-    int mPosition;
+
     public NewsAdapter(Context context, List<News> pData) {
         this.mContext = context;
         mData.addAll(pData);
@@ -32,7 +31,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent,final int viewType) {
-        mRootView = LayoutInflater.from(mContext).inflate(R.layout.item_news, parent, false);
+        View mRootView = LayoutInflater.from(mContext).inflate(R.layout.item_news, parent, false);
        final  NewsItemViewHolder _holder = new NewsItemViewHolder(mRootView);
 
        if(mOnItemClickListener!=null){
@@ -57,12 +56,6 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public int getItemViewType(int position) {
-        mPosition=position;
-        return position;
-    }
-
-    @Override
     public int getItemCount() {
         return mData == null ? 0 : mData.size();
     }
@@ -73,8 +66,8 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     /** 设置点击事件 */
-    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
-        this.mOnItemClickListener = mOnItemClickListener;
+    public void setOnItemClickListener(OnItemClickListener pOnItemClickListener) {
+        this.mOnItemClickListener = pOnItemClickListener;
     }
 
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.entity.Photo;
+import com.example.pc.nightreader.logic.listener.OnItemClickListener;
 import com.example.pc.nightreader.ui.adapter.viewholder.PhotoItemViewHolder;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.List;
 public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      List<Photo> mList=new ArrayList<>();
      Context mContext;
+    private  OnItemClickListener mOnItemClickListener;
     public PhotoAdapter() {
     }
 
@@ -31,8 +33,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(mContext).inflate(R.layout.item_photo,parent,false);
-        PhotoItemViewHolder _holder=new PhotoItemViewHolder(view);
+        View mRootView= LayoutInflater.from(mContext).inflate(R.layout.item_photo,parent,false);
+        final PhotoItemViewHolder _holder=new PhotoItemViewHolder(mRootView);
+        mRootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.onItemClick(v,_holder.getAdapterPosition());
+            }
+        });
         return _holder;
     }
 
@@ -48,4 +56,11 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public int getItemCount() {
         return mList.size();
     }
+
+    /** 设置点击事件 */
+    public void setOnItemClickListener(OnItemClickListener pOnItemClickListener) {
+        this.mOnItemClickListener = pOnItemClickListener;
+    }
+
+
 }
