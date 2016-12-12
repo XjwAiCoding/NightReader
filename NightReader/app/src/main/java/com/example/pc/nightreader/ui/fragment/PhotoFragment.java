@@ -4,7 +4,6 @@ package com.example.pc.nightreader.ui.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -24,6 +23,7 @@ import com.example.pc.nightreader.ui.adapter.PhotoAdapter;
 import com.example.pc.nightreader.ui.fragment.base.BaseFragment;
 import com.example.pc.nightreader.widget.ViewFinder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +35,7 @@ public class PhotoFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mRefreshLayout;
     private StaggeredGridLayoutManager mStaggeredGridManager;
+    private ArrayList<String> mUrlList =new ArrayList<String>();
     public PhotoFragment() {
 
     }
@@ -74,6 +75,8 @@ public class PhotoFragment extends BaseFragment {
 
     }
 
+
+
     @Override
     public void initData() {
         new AsyncPhoto(mActivity, new KLoadListener<List<Photo>>() {
@@ -81,7 +84,7 @@ public class PhotoFragment extends BaseFragment {
             public void onSuccess(List<Photo> pData) {
                 PhotoAdapter _adapter=new PhotoAdapter(pData,mActivity);
                 mRecyclerView.setAdapter(_adapter);
-                registerListener(_adapter,pData);
+                registerListener(_adapter);
             }
 
             @Override
@@ -98,16 +101,18 @@ public class PhotoFragment extends BaseFragment {
     }
 
     /**注册点击事件*/
-    public  void registerListener( PhotoAdapter pAdapter, final List<Photo> photoList){
+    public  void registerListener(final PhotoAdapter pAdapter){
         pAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+               //根据点击位置获取相应实体类并将url属性添加到mUrlList集合中
+               Photo _Photo=pAdapter.getItem(position);
+               mUrlList.add(position,_Photo.getUrl());
                 //跳转到图片详情activity
-                Intent intent = PhotoDetainActivity.getIntent(mActivity);
-                intent.putExtra("photoList", (Parcelable) photoList);
-                intent.putExtra("position",position);
-                startActivity(intent);
+                 Intent intent = PhotoDetainActivity.getIntent(mActivity);
+                 intent.putExtra("position",position);
+                 intent.putStringArrayListExtra("urlList",mUrlList);
+                 startActivity(intent);
             }
         });
     }

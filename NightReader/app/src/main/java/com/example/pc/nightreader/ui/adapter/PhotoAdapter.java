@@ -47,7 +47,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             if ( holder instanceof  PhotoItemViewHolder){
-                ((PhotoItemViewHolder) holder).setPhoto(mContext,mList.get(position)).setDate(mContext,mList.get(position));
+                ((PhotoItemViewHolder) holder).setPhoto(mContext,mList.get(position))
+                        .setDate(mContext,mList.get(position));
 
             }
     }
@@ -55,6 +56,11 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemCount() {
         return mList.size();
+    }
+
+    /** 根据点击位置获取相应实体类 */
+    public  Photo getItem(int position){
+        return  mList.get(position);
     }
 
     /** 设置点击事件 */
