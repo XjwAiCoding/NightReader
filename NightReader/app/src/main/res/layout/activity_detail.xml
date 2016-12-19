@@ -28,6 +28,8 @@
                 <TextView
                     android:padding="3dp"
                     android:id="@+id/detail_text"
+                    android:textColor="#454444"
+                    android:textSize="20sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
