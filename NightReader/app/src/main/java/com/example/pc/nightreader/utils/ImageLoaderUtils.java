@@ -25,9 +25,17 @@ public class ImageLoaderUtils {
         if(imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
-        Glide.with(context).load(url).placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher).crossFade().into(imageView);
+
+      Glide.with(context).load(url).placeholder(R.mipmap.jiazai)
+                .error(R.mipmap.shibai).crossFade().into(imageView);
     }
 
+    public static void displayPhoto(Context context, ImageView imageView, String url) {
+        if(imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+      Glide.with(context).load(url).crossFade().into(imageView);
+
+    }
 
 }

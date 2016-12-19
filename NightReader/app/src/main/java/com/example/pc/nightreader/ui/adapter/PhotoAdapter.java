@@ -22,6 +22,7 @@ import java.util.List;
 public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      List<Photo> mList=new ArrayList<>();
      Context mContext;
+    private List<Integer> mHeights = new ArrayList<>();//存放图片大小的集合
     private  OnItemClickListener mOnItemClickListener;
     public PhotoAdapter() {
     }
@@ -29,6 +30,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public PhotoAdapter(List<Photo> pList, Context pContext) {
         mList.addAll(pList);
         mContext=pContext;
+       // getPhotoHeight();
     }
 
     @Override
@@ -47,6 +49,11 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             if ( holder instanceof  PhotoItemViewHolder){
+                //随机设置图片高度
+               /* ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
+                layoutParams.height = mHeights.get(position);
+                holder.itemView.setLayoutParams(layoutParams);*/
+
                 ((PhotoItemViewHolder) holder).setPhoto(mContext,mList.get(position))
                         .setDate(mContext,mList.get(position));
 
@@ -68,5 +75,12 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.mOnItemClickListener = pOnItemClickListener;
     }
 
+  /* //随机获取图片大小
+    public void getPhotoHeight(){
+        for(int i=0; i < mList.size();i++){
+            //随机的获取一个范围为200-600直接的高度
+            mHeights.add((int)(300+Math.random()*400));
+        }
+    }*/
 
 }
