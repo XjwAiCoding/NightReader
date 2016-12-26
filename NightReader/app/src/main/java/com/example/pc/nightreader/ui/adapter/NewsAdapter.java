@@ -49,8 +49,8 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof NewsItemViewHolder) {
              News mNews = mData.get(position);
-            //加载图片和标题
-            ((NewsItemViewHolder) holder).setTitle(mContext, mNews).setImage(mContext, mNews);
+            //加载图片和标题,来源
+            ((NewsItemViewHolder) holder).setTitle(mContext, mNews).setImage(mContext, mNews).setSource(mContext,mNews);
         }
 
     }

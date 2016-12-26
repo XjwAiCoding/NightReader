@@ -18,8 +18,14 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <WebView
+                android:id="@+id/newsWeb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <ImageView
+            </WebView>
+
+               <!-- <ImageView
                     android:id="@+id/detail_photo"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
@@ -31,7 +37,7 @@
                     android:textColor="#454444"
                     android:textSize="20sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"/>-->
 
         </LinearLayout>
 

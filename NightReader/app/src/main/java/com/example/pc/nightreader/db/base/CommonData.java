@@ -15,10 +15,26 @@ public class CommonData {
 
 
     /**
-     * 视频 http://c.3g.163.com/nc/video/list/V9LG4CHOR/n/10-10.html  娱乐视频
-     * 视频 http://c.3g.163.com/nc/video/list/V9LG4B3A0/n/10-10.html  热点视频
-     * 视频 http://c.3g.163.com/nc/video/list/V9LG4E6VR/n/10-10.html  搞笑视频
-     * 视频 http://c.3g.163.com/nc/video/list/00850FRB/n/10-10.html   精品视频
+     * 社会新闻： http://api.tianapi.com/social/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     国内新闻   http://api.tianapi.com/guonei/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     国际新闻： http://api.tianapi.com/world/?key=6e64995fdca7d5438533a964ae38b486&num=50
+
+     娱乐新闻   http://api.tianapi.com/huabian/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     体育新闻   http://api.tianapi.com/tiyu/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     NBA新闻    http://api.tianapi.com/nba/?key=6e64995fdca7d5438533a964ae38b486&num=50
+
+     足球新闻   http://api.tianapi.com/football/?6e64995fdca7d5438533a964ae38b486&num=50
+     科技新闻   http://api.tianapi.com/keji/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     创业新闻   http://api.tianapi.com/startup/?key=6e64995fdca7d5438533a964ae38b486&num=50
+
+     苹果新闻   http://api.tianapi.com/apple/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     移动互联   http://api.tianapi.com/mobile/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     旅游资讯   http://api.tianapi.com/travel/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     健康知识   http://api.tianapi.com/health/?key=6e64995fdca7d5438533a964ae38b486&num=50
+
+     奇闻异事   http://api.tianapi.com/qiwen/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     VR科技     http://api.tianapi.com/vr/?key=6e64995fdca7d5438533a964ae38b486&num=50
+     IT资讯     http://api.tianapi.com/it/?key=6e64995fdca7d5438533a964ae38b486&num=50
      *
      */
 

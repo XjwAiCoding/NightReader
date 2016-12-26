@@ -24,12 +24,16 @@ public class DBData {
         public static final String DESCRIPTION="description";
         /**  小图地址 */
         public static final String PICSMALL="picSmall";
+       //新闻来源
+        public static final String URL="url";
+
         /** 创建SQL表 */
         public static final String SQL_CREATE_News="CREATE TABLE IF NOT EXISTS "
                 +TABLE_NAME+"("
                 +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +NAME+" VARCHAR,"
                 +DESCRIPTION+" INTEGER,"
+                +URL+" VARCHAR,"
                 +PICSMALL+" VARCHAR)";
 
     }

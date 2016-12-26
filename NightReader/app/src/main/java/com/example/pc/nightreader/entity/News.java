@@ -10,18 +10,20 @@ public class News implements Parcelable {
 
 
    //标题
-    private String name;
-    // 内容
+    private String title;
+    // 内容来源
     private String description;
     //图片地址
-    private String picSmall;
+    private String picUrl;
+    //新闻地址
+    private  String url;
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String title) {
-        this.name = title;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -32,12 +34,20 @@ public class News implements Parcelable {
         this.description = description;
     }
 
-    public String getPicSmall() {
-        return picSmall;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public void setPicSmall(String picSmall) {
-        this.picSmall = picSmall;
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
@@ -47,18 +57,20 @@ public class News implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.name);
+        dest.writeString(this.title);
         dest.writeString(this.description);
-        dest.writeString(this.picSmall);
+        dest.writeString(this.picUrl);
+        dest.writeString(this.url);
     }
 
     public News() {
     }
 
     protected News(Parcel in) {
-        this.name = in.readString();
+        this.title = in.readString();
         this.description = in.readString();
-        this.picSmall = in.readString();
+        this.picUrl = in.readString();
+        this.url = in.readString();
     }
 
     public static final Creator<News> CREATOR = new Creator<News>() {
@@ -72,5 +84,4 @@ public class News implements Parcelable {
             return new News[size];
         }
     };
-
 }

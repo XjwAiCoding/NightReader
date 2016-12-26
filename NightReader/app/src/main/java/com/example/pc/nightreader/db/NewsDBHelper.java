@@ -39,10 +39,11 @@ public class NewsDBHelper {
                 _DB.beginTransaction();
                 if(null!=pNewsList&&pNewsList.size()>0){
                     for(News _News : pNewsList) {
-                        String _Name = _News.getName();
+                        String _Name = _News.getTitle();
                        String _Description = _News.getDescription();
-                        String _PicSmall = _News.getPicSmall();
-                        _CV=toContentValues(_CV,_Name,_Description,_PicSmall);
+                        String _PicSmall = _News.getPicUrl();
+                        String _url=_News.getUrl();
+                        _CV=toContentValues(_CV,_Name,_Description,_PicSmall,_url);
                         if (isExist(_DB, _Name)) {
                             String _selection = DBData.News_COLUMNS.NAME + "=?";
                             String[] _whereArgs = new String[]{_Name};
@@ -89,19 +90,21 @@ public class NewsDBHelper {
         News _News=new News();
         if(null!=pCursor&&pCursor.getCount()>0) {
 
-            _News.setName(pCursor.getString(pCursor.getColumnIndex(DBData.News_COLUMNS.NAME)));
+            _News.setTitle(pCursor.getString(pCursor.getColumnIndex(DBData.News_COLUMNS.NAME)));
             _News.setDescription(pCursor.getString(pCursor.getColumnIndex(DBData.News_COLUMNS.DESCRIPTION)));
-            _News.setPicSmall(pCursor.getString(pCursor.getColumnIndex(DBData.News_COLUMNS.PICSMALL)));
+            _News.setPicUrl(pCursor.getString(pCursor.getColumnIndex(DBData.News_COLUMNS.PICSMALL)));
+            _News.setUrl(pCursor.getString(pCursor.getColumnIndex(DBData.News_COLUMNS.URL)));
         }
         return _News;
     }
 
     /** 获得ContentValues */
-    private ContentValues toContentValues(ContentValues pCV, String pName,String pDescription,String pPicSmall){
+    private ContentValues toContentValues(ContentValues pCV, String pName,String pDescription,String pPicSmall,String url){
         pCV.clear();
         pCV.put(DBData.News_COLUMNS.NAME, pName);
         pCV.put(DBData.News_COLUMNS.DESCRIPTION, pDescription);
         pCV.put(DBData.News_COLUMNS.PICSMALL, pPicSmall);
+        pCV.put(DBData.News_COLUMNS.URL, url);
         return pCV;
     }
 

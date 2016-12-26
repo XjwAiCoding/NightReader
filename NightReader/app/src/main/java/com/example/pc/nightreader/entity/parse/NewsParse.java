@@ -22,10 +22,10 @@ public class NewsParse {
      */
     public static News parseNewsFromJson(Context pContext, JSONObject pJSONObject) {
          News _News=new News();
-        _News.setName(pJSONObject.optString("name"));
+        _News.setTitle(pJSONObject.optString("title"));
         _News.setDescription(pJSONObject.optString("description"));
-        _News.setPicSmall(pJSONObject.optString("picSmall"));
-
+        _News.setPicUrl(pJSONObject.optString("picUrl"));
+         _News.setUrl(pJSONObject.optString("url"));
         return _News;
     }
 
@@ -40,7 +40,7 @@ public class NewsParse {
         ArrayList<News> _newsList=new ArrayList<>();
         try{
             JSONObject _JsonObject=new JSONObject(pJsonData);
-            JSONArray _JsonArray=_JsonObject.getJSONArray("data");
+            JSONArray _JsonArray=_JsonObject.getJSONArray("newslist");
             for(int i=0;i<_JsonArray.length();i++){
                 JSONObject _object=_JsonArray.getJSONObject(i);
                 //往list里添加实体类对象
