@@ -3,12 +3,16 @@
     <string name="app_name">NightReader</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="my_cahnnel">我的频道</string>
+    <string name="tip_drag">长按编辑,拖拽排序</string>
+    <string name="other_channel">其他频道</string>
+    <string name="edit">编辑</string>
+    <string name="finish">完成</string>
 
     <!--新闻的可选频道-->
-    <string-array name="news_channel_name">
+    <string-array name="news_Mychannel">
         <item>社会</item>
-        <item>国内</item>
+        <item>国内</item>news_Mychannel
         <item>国际</item>
         <item>娱乐</item>
         <item>体育</item>
@@ -22,9 +26,14 @@
         <item>健康</item>
         <item>奇闻</item>
         <item>VR</item>
-        <item>IT</item>
     </string-array>
 
+
+    <string-array name="news_Morechannel">
+        <item>精选</item>
+        <item>IT</item>
+
+    </string-array>
     <!--视频频道-->
     <string-array name="video_channel_name">
         <item>热点</item>

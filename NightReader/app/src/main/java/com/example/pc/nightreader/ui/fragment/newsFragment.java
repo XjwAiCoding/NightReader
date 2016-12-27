@@ -36,9 +36,11 @@ public class newsFragment extends BaseFragment  implements View.OnClickListener{
     View view;
     TabLayout mTabLayout;//顶部导航栏
     ViewPager mPager;
-    ArrayList<String> mChannleList;//频道名集合
+    ArrayList<String> mMyChannleList;//我的频道名集合
+    ArrayList<String> mMoreChanleList;//更多频道名集合
     ArrayList<Fragment> mFragmentList;
-    String channle_name[];//频道名数组
+    String mMychannle_name[];//我的频道名数组
+    String  mMorechannle_name[];
     ImageView mExpend_arrow;//旋转箭头
     FrameLayout mFrame_column_order;//盛装ColumnOrderFragment的视图
     ColumnOrderFragment mColumnOrderFragment;//栏目顺序定制fragment
@@ -57,7 +59,8 @@ public class newsFragment extends BaseFragment  implements View.OnClickListener{
         super.onAttach(context);
         if (context instanceof AppCompatActivity) {
             mActivity = (AppCompatActivity) context;
-            channle_name = getResources().getStringArray(R.array.news_channel_name);
+            mMychannle_name = getResources().getStringArray(R.array.news_Mychannel);
+            mMorechannle_name=getResources().getStringArray(R.array.news_Morechannel);
         }
     }
 
@@ -72,10 +75,14 @@ public class newsFragment extends BaseFragment  implements View.OnClickListener{
 
     @Override
     public void initData() {
-        mChannleList = new ArrayList<>();
+        mMyChannleList = new ArrayList<>();
+        mMoreChanleList=new ArrayList<>();
         mFragmentList = new ArrayList<>();
-        for (int i = 0; i < channle_name.length; i++) {
-            mChannleList.add(channle_name[i]);
+        for (int i = 0; i < mMychannle_name.length; i++) {
+            mMyChannleList.add(mMychannle_name[i]);
+        }
+        for (int i = 0; i < mMorechannle_name.length; i++) {
+            mMoreChanleList.add(mMorechannle_name[i]);
         }
 
     }
@@ -87,10 +94,10 @@ public class newsFragment extends BaseFragment  implements View.OnClickListener{
         mTabLayout = ViewFinder.getView(view, R.id.tab_title);
         mPager = ViewFinder.getView(view, R.id.viewpager);
         mTabLayout.setupWithViewPager(mPager);
-        initTab(channle_name.length, mTabLayout);
-        mFragmentList.addAll(initFragment(channle_name.length));
+        initTab(mMychannle_name.length, mTabLayout);
+        mFragmentList.addAll(initFragment(mMychannle_name.length));
         mPager.setOffscreenPageLimit(4);//设置viewpager缓存页数量
-        PageAdapter _Adapter = new PageAdapter(getChildFragmentManager(), mChannleList, mFragmentList);
+        PageAdapter _Adapter = new PageAdapter(getChildFragmentManager(), mMyChannleList, mFragmentList);
         mPager.setAdapter(_Adapter);
         mExpend_arrow=ViewFinder.getView(view, R.id.expandArrow);
         mExpend_arrow.setOnClickListener(this);
@@ -142,6 +149,7 @@ public class newsFragment extends BaseFragment  implements View.OnClickListener{
                 FragmentTransaction _FragmentTransaction = mActivity.getSupportFragmentManager().beginTransaction();
                 if (null == mColumnOrderFragment){
                      mColumnOrderFragment = ColumnOrderFragment.newInstance();
+                    mColumnOrderFragment.setData(mMyChannleList,mMoreChanleList);//传递数据
                     _FragmentTransaction = _FragmentTransaction.add(frame_column_order, mColumnOrderFragment, ColumnOrderFragment.class.getSimpleName());
                 }else {
                     _FragmentTransaction.show(mColumnOrderFragment);

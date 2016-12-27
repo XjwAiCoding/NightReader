@@ -2,8 +2,17 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@color/colorAccent"
+             android:background="@color/gray"
              tools:context="com.example.pc.nightreader.ui.fragment.ColumnOrderFragment">
 
+    <android.support.v7.widget.RecyclerView
+    android:id="@+id/channleRecycler"
+    android:padding="8dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
