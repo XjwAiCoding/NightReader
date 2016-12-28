@@ -1,9 +1,4 @@
 package com.example.pc.nightreader.ui.adapter.viewholder;
-
-/**
- * Created by xujiawei on 2016/12/28.
- */
-
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +8,7 @@ import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.logic.listener.OnDragVHListener;
 
 /**
+ * Created by xujiawei on 2016/12/28.
  * 我的频道
  */
 public  class MyViewHolder extends RecyclerView.ViewHolder implements OnDragVHListener {
