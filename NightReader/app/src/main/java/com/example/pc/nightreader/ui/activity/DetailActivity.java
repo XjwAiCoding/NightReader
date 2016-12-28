@@ -92,7 +92,7 @@ public class DetailActivity extends BaseActivity  implements View.OnClickListene
         // text是分享文本，所有平台都需要这个字段
         oks.setText(mNews.getDescription());
         // imagePath是图片的本地路径
-        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        oks.setImagePath(mNews.getPicUrl());//确保SDcard下面存在此张图片
         // url仅在微信（包括好友和朋友圈）中使用
         oks.setUrl(mNews.getUrl());
         // comment是我对这条分享的评论
