@@ -10,7 +10,7 @@ import com.example.pc.nightreader.logic.listener.OnItemMoveListener;
 
 /**
  * ItemDragHelperCallback
- * Created by YoKeyword on 15/12/29.
+ *
  */
 public class ItemDragHelperCallback extends ItemTouchHelper.Callback {
 

@@ -1,8 +1,5 @@
 package com.example.pc.nightreader.ui.adapter;
 
-/**
- * Created by xujiawei on 2016/12/27.
- */
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -22,15 +19,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pc.nightreader.R;
-import com.example.pc.nightreader.logic.listener.OnDragVHListener;
 import com.example.pc.nightreader.logic.listener.OnItemMoveListener;
+import com.example.pc.nightreader.ui.adapter.viewholder.MyChannelHeaderViewHolder;
+import com.example.pc.nightreader.ui.adapter.viewholder.MyViewHolder;
+import com.example.pc.nightreader.ui.adapter.viewholder.OtherViewHolder;
 
 import java.util.ArrayList;
 
 
 /**
  * 拖拽排序 + 增删
- * Created by YoKeyword on 15/12/28.
+ * Created by xujiawei on 2016/12/27.
  */
 public class ColumnOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements OnItemMoveListener {
     // 我的频道 标题部分
@@ -520,57 +519,4 @@ public class ColumnOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         this.mChannelItemClickListener = listener;
     }
 
-    /**
-     * 我的频道
-     */
-    class MyViewHolder extends RecyclerView.ViewHolder implements OnDragVHListener {
-        private TextView textView;
-        private ImageView imgEdit;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.tv);
-            imgEdit = (ImageView) itemView.findViewById(R.id.img_edit);
-        }
-
-        /**
-         * item 被选中时
-         */
-        @Override
-        public void onItemSelected() {
-            textView.setBackgroundResource(R.drawable.bg_channel_p);
-        }
-
-        /**
-         * item 取消选中时
-         */
-        @Override
-        public void onItemFinish() {
-            textView.setBackgroundResource(R.drawable.bg_channel);
-        }
-    }
-
-    /**
-     * 其他频道
-     */
-    class OtherViewHolder extends RecyclerView.ViewHolder {
-        private TextView textView;
-
-        public OtherViewHolder(View itemView) {
-            super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.tv);
-        }
-    }
-
-    /**
-     * 我的频道  标题部分
-     */
-    class MyChannelHeaderViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvBtnEdit;
-
-        public MyChannelHeaderViewHolder(View itemView) {
-            super(itemView);
-            tvBtnEdit = (TextView) itemView.findViewById(R.id.tv_btn_edit);
-        }
-    }
 }
