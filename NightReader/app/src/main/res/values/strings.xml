@@ -8,6 +8,7 @@
     <string name="other_channel">其他频道</string>
     <string name="edit">编辑</string>
     <string name="finish">完成</string>
+    <string name="tap_twice_to_exit">再按一次退出程序</string>
 
     <!--新闻的可选频道-->
     <string-array name="news_Mychannel">

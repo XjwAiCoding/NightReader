@@ -1,36 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.pc.nightreader.ui.activity.MainActivity">
 
+     <include
+        android:id="@+id/app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_appbar"
+        />
+
     <FrameLayout
         android:id="@+id/commentContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/tablayout"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/line"
+        android:layout_below="@+id/app_title"
         >
     </FrameLayout>
 
+   <LinearLayout
+     android:layout_alignParentBottom="true"
+    android:id="@+id/line"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:background="#bebcbc"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </RelativeLayout>
+
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tablayout"
+        android:layout_below="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
         android:layout_alignParentBottom="true"
-         tl:tl_iconHeight="20dp"
-         tl:tl_iconWidth="20dp"
-        tl:tl_indicator_height="0dp"
+        android:padding="5dp"
+        tl:tl_iconHeight="20dp"
+        tl:tl_iconWidth="20dp"
         tl:tl_indicator_color="@color/gray"
+        tl:tl_indicator_height="0dp"
         tl:tl_textSelectColor="@color/main_color"
         tl:tl_textUnselectColor="@color/light_gray"
         tl:tl_textsize="11sp"
         >
-
     </com.flyco.tablayout.CommonTabLayout>
+</LinearLayout>
+
 
 </RelativeLayout>

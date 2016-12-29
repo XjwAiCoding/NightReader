@@ -8,7 +8,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.entity.News;
@@ -20,29 +20,30 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 
 
 public class DetailActivity extends BaseActivity  implements View.OnClickListener {
-    ImageView mImageView;
-    TextView mTextView;
     News mNews;
     int position;
-    ImageView mDetailBack;
+    ImageView mBack;//返回按钮
     FloatingActionButton mDatailShare;//分享按钮
     WebView mNewsWeb;
+    private  ImageView mDayOrNight;//日夜间模式切换
+    private  boolean isClickNightChange=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        ShareSDK.initSDK(this,"1a3d0c9d3eaac");
+        ShareSDK.initSDK(this,"1a3d0c9d3eaac");//ShareSDK的appKey
         initData();
         initView();
+        registerListener();
     }
 
     @Override
     public void initView() {
-        mDetailBack=ViewFinder.getView(this, R.id.detail_back);
+        mDayOrNight=ViewFinder.getView(this, R.id.DayOrNight);
+        mBack=ViewFinder.getView(this, R.id.back);
         mDatailShare=ViewFinder.getView(this, R.id.detail_share);
         mNewsWeb= ViewFinder.getView(this, R.id.newsWeb);
-        mDetailBack.setOnClickListener(this);
-        mDatailShare.setOnClickListener(this);
+
         mNewsWeb.loadUrl(mNews.getUrl());
        //给webview设置内置浏览器，就不会打开手机系统浏览器
         mNewsWeb.setWebViewClient(new WebViewClient(){
@@ -52,6 +53,14 @@ public class DetailActivity extends BaseActivity  implements View.OnClickListene
                 return true;
             }
         });
+
+    }
+
+    /** 注册监听器 */
+    private void registerListener() {
+        mDatailShare.setOnClickListener(this);
+        mBack.setOnClickListener(this);
+        mDayOrNight.setOnClickListener(this);
     }
 
     @Override
@@ -71,11 +80,22 @@ public class DetailActivity extends BaseActivity  implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.detail_back:
+            case R.id.back:
                 finish();
                 break;
+
             case R.id.detail_share:
                 showShare();
+                break;
+            case R.id.DayOrNight:
+                Toast.makeText(DetailActivity.this, "日夜间模式切换",Toast.LENGTH_SHORT).show();
+                if (isClickNightChange==false){
+                    mDayOrNight.setImageResource(R.mipmap.ic_action_button_theme_night);
+                    isClickNightChange=true;
+                }else {
+                    mDayOrNight.setImageResource(R.mipmap.ic_action_button_theme_day);
+                    isClickNightChange=false;
+                }
                 break;
         }
     }
