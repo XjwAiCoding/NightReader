@@ -22,7 +22,7 @@ public class VideoParse {
      * @param pJSONObject   JsonObject对象
      * @return
      */
-    public static Video parseVideoFromJson(Context pContext, JSONObject pJSONObject) {
+    /*public static Video parseVideoFromJson(Context pContext, JSONObject pJSONObject) {
         Video _Video=new Video();
         _Video.setTitle(pJSONObject.optString("desc"));
         _Video.setUrl(pJSONObject.optString("url"));
@@ -30,8 +30,16 @@ public class VideoParse {
         _Video.setVideosource(pJSONObject.optString("source"));
 
         return _Video;
+    }*/
+    public static Video parseVideoFromJson(Context pContext, JSONObject pJSONObject) {
+        Video _Video=new Video();
+        _Video.setTitle(pJSONObject.optString("title"));
+        _Video.setUrl(pJSONObject.optString("mp4Hd_url"));
+        _Video.setPlayCount(pJSONObject.optString("playCount"));
+        _Video.setVideosource(pJSONObject.optString("videosource"));
+        _Video.setCover(pJSONObject.optString("cover"));
+        return _Video;
     }
-
     /**
      *
      * @param pContext
@@ -43,7 +51,7 @@ public class VideoParse {
         ArrayList<Video> _VideoList=new ArrayList<>();
         try{
             JSONObject  _JsonObject=new JSONObject(pJsonData);
-            JSONArray _JsonArray=_JsonObject.getJSONArray("results");
+            JSONArray _JsonArray=_JsonObject.getJSONArray("V9LG4CHOR");
             for(int i=0;i<_JsonArray.length();i++){
                 JSONObject _object=_JsonArray.getJSONObject(i);
                 //往list里添加实体类对象

@@ -45,10 +45,11 @@ public class VideoDBHelper {
                         String _Url =_Video.getUrl();
                         String _Videosource=_Video.getVideosource();
                         String _PlayCount = _Video.getPlayCount();
-                        _CV=toContentValues(_CV,_Title,_Url,_Videosource,_PlayCount);
+                        String _cover=_Video.getCover();
+                        _CV=toContentValues(_CV,_Title,_Url,_Videosource,_PlayCount,_cover);
                         if (isExist(_DB, _Title)) {
                             String _selection = DBData.Video_COLUMNS.TITLE + "=?";
-                            String[] _whereArgs = new String[]{_Title};
+                             String[] _whereArgs = new String[]{_Title};
                             _result = _DB.update(DBData.Video_COLUMNS.TABLE_NAME, _CV, _selection, _whereArgs);
                         } else {
                             _result = _DB.insert(DBData.Video_COLUMNS.TABLE_NAME, null, _CV);
@@ -93,18 +94,19 @@ public class VideoDBHelper {
             _Video.setUrl(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.URL)));
             _Video.setVideosource(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.VIDEOSOURCE)));
             _Video.setPlayCount(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.PLAYCOUNT)));
-
+            _Video.setCover(pCursor.getString(pCursor.getColumnIndex(DBData.Video_COLUMNS.COVER)));
         }
         return _Video;
     }
 
     /** 获得ContentValues */
-    private ContentValues toContentValues(ContentValues pCV, String pTitle,String pUrl, String pVideosource,String pPlayCount ){
+    private ContentValues toContentValues(ContentValues pCV, String pTitle,String pUrl, String pVideosource,String pPlayCount,String pCover ){
         pCV.clear();
         pCV.put(DBData.Video_COLUMNS.TITLE, pTitle);
         pCV.put(DBData.Video_COLUMNS.URL, pUrl);
         pCV.put(DBData.Video_COLUMNS.VIDEOSOURCE, pVideosource);
         pCV.put(DBData.Video_COLUMNS.PLAYCOUNT, pPlayCount);
+        pCV.put(DBData.Video_COLUMNS.COVER,pCover);
         return pCV;
     }
 

@@ -13,6 +13,15 @@ public class Video implements Parcelable {
     private String url;       //视频地址
     private String videosource;//视频来源
     private String playCount;//播放次数
+    private  String cover;//封面
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
 
     public String getTitle() {
         return title;
@@ -58,6 +67,7 @@ public class Video implements Parcelable {
         dest.writeString(this.playCount);
         dest.writeString(this.url);
         dest.writeString(this.videosource);
+        dest.writeString(this.cover);
     }
 
     public Video() {
@@ -68,6 +78,7 @@ public class Video implements Parcelable {
         this.playCount = in.readString();
         this.url = in.readString();
         this.videosource = in.readString();
+        this.cover=in.readString();
     }
 
     public static final Parcelable.Creator<Video> CREATOR = new Parcelable.Creator<Video>() {

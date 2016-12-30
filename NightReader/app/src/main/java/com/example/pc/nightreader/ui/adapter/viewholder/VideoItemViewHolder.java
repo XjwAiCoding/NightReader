@@ -39,7 +39,7 @@ public class VideoItemViewHolder extends RecyclerView.ViewHolder {
     //设置视频标题，缩略图和视频地址
     public VideoItemViewHolder setVideo(Context pContext, Video pVideo){
         ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(pContext));//这一步必须要加，不然jcvideoplayer-lib项目无法播放视频
-        videoController.setUp(pVideo.getUrl(),"http://p.qpic.cn/videoyun/0/2449_ded7b566b37911e5942f0b208e48548d_2/640", pVideo.getTitle());
+        videoController.setUp(pVideo.getUrl(),pVideo.getCover(), pVideo.getTitle());
         /* videoController.setUp("http://2449.vod.myqcloud.com/2449_ded7b566b37911e5942f0b208e48548d.f20.mp4",
                 "http://p.qpic.cn/videoyun/0/2449_ded7b566b37911e5942f0b208e48548d_2/640",
                 "一行代码实现视频播放");*/
@@ -54,7 +54,7 @@ public class VideoItemViewHolder extends RecyclerView.ViewHolder {
     }
     //设置播放次数
     public VideoItemViewHolder setCount(Context pContext, Video pVideo){
-        mCount.setText(pVideo.getPlayCount());
+        mCount.setText("已播放"+pVideo.getPlayCount()+"次");
         return this;
     }
 

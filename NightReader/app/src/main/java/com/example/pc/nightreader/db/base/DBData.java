@@ -74,6 +74,8 @@ public class DBData {
         public static final String VIDEOSOURCE="videosource";
         /** 播放次数 */
         public static final String PLAYCOUNT="playcount";
+        /** 封面 */
+        public static final String COVER="cover";
 
         /** 创建SQL表 */
         public static final String SQL_CREATE_VIDEO="CREATE TABLE IF NOT EXISTS "
@@ -82,7 +84,9 @@ public class DBData {
                 +TITLE+" VARCHAR,"
                 +URL+" VARCHAR,"
                 +VIDEOSOURCE+" VARCHAR,"
+                +COVER+" VARCHAR,"
                 +PLAYCOUNT+" VARCHAR)" ;
+
 
     }
 
