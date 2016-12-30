@@ -4,6 +4,7 @@ package com.example.pc.nightreader.ui.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -11,9 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 
 import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.entity.News;
@@ -67,7 +70,6 @@ public class NewsListFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_news_list, container, false);
-
         initView();
         initData();
         return mRootView;
@@ -78,13 +80,30 @@ public class NewsListFragment extends BaseFragment {
         mRefreshLayout = ViewFinder.getView(mRootView, R.id.RefreshLayout);
         mRecyclerView = ViewFinder.getView(mRootView, R.id.recyclerView);
         //设置刷新时的动画颜色，可以设置4个
-        mRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark, R.color.gray);
+        mRefreshLayout.setColorSchemeResources(R.color.appbarColor);
+       // mRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark, R.color.gray);
         mRecyclerView.setHasFixedSize(true);//固定recyclerView的大小，被用于自身的优化
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());//设置列表项的动画
         mLinearLayoutManager=new LinearLayoutManager(mActivity);//获取视图管理器实例对象
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //刷新界面
+                NewsListFragment.newInstance(mPosition);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
+                        // 停止刷新
+                        mRefreshLayout.setRefreshing(false);
+                        showPopupWindow();
+                    }
+                }, 2000);
+
+            }
+        });
     }
 
     @Override
@@ -110,7 +129,7 @@ public class NewsListFragment extends BaseFragment {
        }).execute();
     }
 
-   //adapter点击事件
+    //adapter点击事件
    public void registerListener( final NewsAdapter pAdapter){
       pAdapter.setOnItemClickListener(new OnItemClickListener() {
           @Override
@@ -125,4 +144,18 @@ public class NewsListFragment extends BaseFragment {
 
     });
    }
+
+    /** 更新数据提示 */
+    private void  showPopupWindow(){
+        View _view=LayoutInflater.from(mActivity).inflate(R.layout.toastpopupwindow,null);
+       final PopupWindow _ToastPopupWindow=new PopupWindow(_view, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        _ToastPopupWindow.showAtLocation(mRootView, Gravity.TOP,0,350);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                _ToastPopupWindow.dismiss();
+            }
+        },1000);
+
+    }
 }

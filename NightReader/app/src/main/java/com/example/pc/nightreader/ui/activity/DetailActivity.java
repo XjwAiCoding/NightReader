@@ -83,7 +83,6 @@ public class DetailActivity extends BaseActivity  implements View.OnClickListene
             case R.id.back:
                 finish();
                 break;
-
             case R.id.detail_share:
                 showShare();
                 break;

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class NewsHelper {
 
-   // private  static  final String url= "http://www.imooc.com/api/teacher?type=4&num=30";
+    // private  static  final String url= "http://www.imooc.com/api/teacher?type=4&num=30";
     private  static  final String url= "http://api.tianapi.com/social/?key=6e64995fdca7d5438533a964ae38b486&num=50 ";
 
     public static void initNewsData(final Context pContext){

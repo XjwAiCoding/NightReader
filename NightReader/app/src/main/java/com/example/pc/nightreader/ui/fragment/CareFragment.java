@@ -2,8 +2,10 @@ package com.example.pc.nightreader.ui.fragment;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,6 +89,7 @@ public class CareFragment extends BaseFragment implements  View.OnClickListener{
                 startActivity(_nightIntent);
                 break;
             case R.id.CacheDelete:
+                deleteCache();
                 break;
             case R.id.advice:
                 Intent _adviceIntent= AdviceActivity.getIntent(mActivity);
@@ -105,5 +108,23 @@ public class CareFragment extends BaseFragment implements  View.OnClickListener{
         mCacheDelete.setOnClickListener(this);
         mAdvice.setOnClickListener(this);
         mcheckUpdate.setOnClickListener(this);
+    }
+
+     /** 删除缓存对话框*/
+     public void deleteCache(){
+        final AlertDialog.Builder _Dialog=new AlertDialog.Builder(mActivity);
+        _Dialog.setTitle("确定删除？")
+                .setMessage("清除缓存将会删除所有离线下载的新闻内容。")
+                .setPositiveButton("删除", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                }).create().show();
     }
 }

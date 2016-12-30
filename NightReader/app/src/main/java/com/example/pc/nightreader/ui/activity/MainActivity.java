@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity  implements View.OnClickListener{
     private ImageView mBack;//返回键
     private  ImageView mDayOrNight;//日夜间模式切换
     boolean isOut=false;//是否退出
-    private  boolean isClickNightChange=false;
+    private  boolean isClickNightChange=false;//是否点击了切换夜间模式
     private  Runnable mRunnable=new Runnable() {
         @Override
         public void run() {
