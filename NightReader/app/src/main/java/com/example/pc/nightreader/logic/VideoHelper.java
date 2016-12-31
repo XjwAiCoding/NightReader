@@ -17,7 +17,7 @@ public class VideoHelper {
 
     //private  static  final String url= "http://gank.io/api/data/休息视频/20/3";
     /** 需要解析的json文件名*/
-    public static final  String Video_FileName = "video.txt";
+    public static final  String Video_FileName = "videosource.txt";
     public static void initVideoData(final Context pContext){
 
         //解析
