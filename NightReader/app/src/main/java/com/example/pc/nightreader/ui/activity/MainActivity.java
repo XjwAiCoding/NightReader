@@ -235,11 +235,12 @@ public class MainActivity extends BaseActivity  implements View.OnClickListener{
                 }
                 break;
             case R.id.DayOrNight:
-                Toast.makeText(MainActivity.this, "日夜间模式切换",Toast.LENGTH_SHORT).show();
                 if (isClickNightChange==false){
+                    Toast.makeText(MainActivity.this,"夜间模式",Toast.LENGTH_SHORT).show();
                     mDayOrNight.setImageResource(R.mipmap.ic_action_button_theme_night);
                     isClickNightChange=true;
                 }else {
+                    Toast.makeText(MainActivity.this,"日间模式",Toast.LENGTH_SHORT).show();
                     mDayOrNight.setImageResource(R.mipmap.ic_action_button_theme_day);
                     isClickNightChange=false;
                 }
