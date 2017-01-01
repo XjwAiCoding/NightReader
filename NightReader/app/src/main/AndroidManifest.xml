@@ -41,7 +41,6 @@
             >
         </activity>
         <activity android:name=".ui.activity.base.BaseActivity"
-            android:theme="@style/AppTheme.BaseDay"
             >
         </activity>
         <activity android:name=".ui.activity.DetailActivity"
@@ -51,16 +50,12 @@
             >
         </activity>
         <activity android:name=".ui.activity.NightSettingActivity"
-
             >
-
            </activity>
         <activity android:name=".ui.activity.CollectionActivity"
-
             >
         </activity>
         <activity android:name=".ui.activity.AdviceActivity"
-
             >
         </activity>
         <!-- sharesdk -->
