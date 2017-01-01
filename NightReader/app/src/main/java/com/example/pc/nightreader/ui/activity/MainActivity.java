@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatDelegate;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -241,7 +240,6 @@ public class MainActivity extends BaseActivity  implements View.OnClickListener{
                     mDayOrNight.setImageResource(R.mipmap.ic_action_button_theme_night);
                     isClickNightChange=true;
                 }else {
-                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     mDayOrNight.setImageResource(R.mipmap.ic_action_button_theme_day);
                     isClickNightChange=false;
                 }
