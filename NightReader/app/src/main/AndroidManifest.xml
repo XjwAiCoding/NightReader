@@ -22,6 +22,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <application
+        android:name=".NewsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -39,11 +40,28 @@
         <activity android:name=".ui.activity.MainActivity"
             >
         </activity>
-        <activity android:name=".ui.activity.base.BaseActivity">
+        <activity android:name=".ui.activity.base.BaseActivity"
+            android:theme="@style/AppTheme.BaseDay"
+            >
         </activity>
-        <activity android:name=".ui.activity.DetailActivity">
+        <activity android:name=".ui.activity.DetailActivity"
+            >
         </activity>
-        <activity android:name=".ui.activity.PhotoDetainActivity">
+        <activity android:name=".ui.activity.PhotoDetainActivity"
+            >
+        </activity>
+        <activity android:name=".ui.activity.NightSettingActivity"
+
+            >
+
+           </activity>
+        <activity android:name=".ui.activity.CollectionActivity"
+
+            >
+        </activity>
+        <activity android:name=".ui.activity.AdviceActivity"
+
+            >
         </activity>
         <!-- sharesdk -->
         <activity
@@ -77,12 +95,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <activity android:name=".ui.activity.NightSettingActivity">
-        </activity>
-        <activity android:name=".ui.activity.CollectionActivity">
-        </activity>
-        <activity android:name=".ui.activity.AdviceActivity">
-        </activity>
+
     </application>
 
 </manifest>

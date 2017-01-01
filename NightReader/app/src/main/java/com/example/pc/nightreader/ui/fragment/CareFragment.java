@@ -19,6 +19,7 @@ import com.example.pc.nightreader.ui.activity.AdviceActivity;
 import com.example.pc.nightreader.ui.activity.CollectionActivity;
 import com.example.pc.nightreader.ui.activity.NightSettingActivity;
 import com.example.pc.nightreader.ui.fragment.base.BaseFragment;
+import com.example.pc.nightreader.utils.file.DataCleanManager;
 import com.example.pc.nightreader.widget.ViewFinder;
 
 /**
@@ -69,6 +70,7 @@ public class CareFragment extends BaseFragment implements  View.OnClickListener{
         mAdvice=ViewFinder.getView(mRootView, R.id.advice);
         mcheckUpdate=ViewFinder.getView(mRootView, R.id.checkUpdate);
         mCacheSize=ViewFinder.getView(mRootView, R.id.cacheSize);
+        computeCacheSize();
         registerListener();
     }
 
@@ -118,13 +120,52 @@ public class CareFragment extends BaseFragment implements  View.OnClickListener{
                 .setPositiveButton("删除", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        dialog.dismiss();
+                        deleteAllCache();
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 }).create().show();
+    }
+
+    /** 计算缓存大小*/
+  private   void   computeCacheSize(){
+      new Thread(new Runnable() {
+          @Override
+          public void run() {
+              mActivity.runOnUiThread(new Runnable() {
+                  @Override
+                  public void run() {
+                      try {
+                          mCacheSize.setText(DataCleanManager.getTotalCacheSize(mActivity));
+                      } catch (Exception e) {
+                          e.printStackTrace();
+                      }
+                  }
+              });
+          }
+      }).start();
+
+    }
+    /** 删除所有缓存*/
+    private void  deleteAllCache(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        DataCleanManager.clearAllCache(mActivity);
+                        mCacheSize.setText("0KB");
+                    }
+                });
+
+
+            }
+        }).start();
     }
 }
