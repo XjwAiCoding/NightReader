@@ -47,7 +47,7 @@
                 android:padding="5dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:id="@+id/modeChange"
+                android:id="@+id/lightChange"
                 android:layout_width="match_parent"
                 android:layout_height="70dp">
                 <ImageView
@@ -59,7 +59,7 @@
                 <TextView
                     android:textColor="#0a0909"
                     android:layout_marginLeft="10dp"
-                    android:text="夜间模式"
+                    android:text="屏幕亮度"
                     android:id="@+id/modeChangeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
