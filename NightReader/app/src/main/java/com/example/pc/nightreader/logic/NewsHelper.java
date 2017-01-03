@@ -17,7 +17,7 @@ public class NewsHelper {
 
    // private  static  final String url= "http://api.tianapi.com/social/?key=6e64995fdca7d5438533a964ae38b486&num=50 ";
 
-    public static void initNewsData(final Context pContext,int position){
+    public static void initNewsData(final Context pContext, final int position){
 
         OkHttpUtils.ResultCallback<String> _resultCallback=new OkHttpUtils.ResultCallback<String>() {
             @Override
@@ -26,7 +26,7 @@ public class NewsHelper {
                 ArrayList<News> _NewsList = NewsParse.parseNewsListFromJson(pContext,response);
                 //入库
                 NewsDBHelper _NewsDBHelper=new NewsDBHelper(pContext);
-                long _result= _NewsDBHelper.insertNews(_NewsList);
+                long _result= _NewsDBHelper.insertNews(_NewsList,position);
             }
 
             @Override

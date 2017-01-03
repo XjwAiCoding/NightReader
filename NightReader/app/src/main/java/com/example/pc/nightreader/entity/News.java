@@ -17,6 +17,15 @@ public class News implements Parcelable {
     private String picUrl;
     //新闻地址
     private  String url;
+    private  int position;
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public String getTitle() {
         return title;
@@ -61,6 +70,7 @@ public class News implements Parcelable {
         dest.writeString(this.description);
         dest.writeString(this.picUrl);
         dest.writeString(this.url);
+        dest.writeInt(this.position);
     }
 
     public News() {
@@ -71,6 +81,7 @@ public class News implements Parcelable {
         this.description = in.readString();
         this.picUrl = in.readString();
         this.url = in.readString();
+        this.position=in.readInt();
     }
 
     public static final Creator<News> CREATOR = new Creator<News>() {

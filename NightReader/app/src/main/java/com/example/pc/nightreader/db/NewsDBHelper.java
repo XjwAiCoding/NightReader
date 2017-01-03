@@ -29,7 +29,7 @@ public class NewsDBHelper {
         mDBHelper=DBHelper.getInstance(pContext);
     }
     /** 添加news */
-    public long insertNews(List<News> pNewsList){
+    public long insertNews(List<News> pNewsList,int position){
         long _result=0;
         ContentValues _CV = new ContentValues();
         synchronized (LOCK){
@@ -43,7 +43,7 @@ public class NewsDBHelper {
                        String _Description = _News.getDescription();
                         String _PicSmall = _News.getPicUrl();
                         String _url=_News.getUrl();
-                        _CV=toContentValues(_CV,_Name,_Description,_PicSmall,_url);
+                        _CV=toContentValues(_CV,_Name,_Description,_PicSmall,_url,position);
                         if (isExist(_DB, _Name)) {
                             String _selection = DBData.News_COLUMNS.NAME + "=?";
                             String[] _whereArgs = new String[]{_Name};
@@ -94,17 +94,19 @@ public class NewsDBHelper {
             _News.setDescription(pCursor.getString(pCursor.getColumnIndex(DBData.News_COLUMNS.DESCRIPTION)));
             _News.setPicUrl(pCursor.getString(pCursor.getColumnIndex(DBData.News_COLUMNS.PICSMALL)));
             _News.setUrl(pCursor.getString(pCursor.getColumnIndex(DBData.News_COLUMNS.URL)));
+            _News.setPosition(pCursor.getInt(pCursor.getColumnIndex(DBData.News_COLUMNS.position)));
         }
         return _News;
     }
 
     /** 获得ContentValues */
-    private ContentValues toContentValues(ContentValues pCV, String pName,String pDescription,String pPicSmall,String url){
+    private ContentValues toContentValues(ContentValues pCV, String pName,String pDescription,String pPicSmall,String url,int position){
         pCV.clear();
         pCV.put(DBData.News_COLUMNS.NAME, pName);
         pCV.put(DBData.News_COLUMNS.DESCRIPTION, pDescription);
         pCV.put(DBData.News_COLUMNS.PICSMALL, pPicSmall);
         pCV.put(DBData.News_COLUMNS.URL, url);
+        pCV.put(DBData.News_COLUMNS.position, position);
         return pCV;
     }
 
@@ -126,5 +128,31 @@ public class NewsDBHelper {
             _Cursor.close();
         }
         return _IsExist;
+    }
+
+    //根据不同位置显示不同新闻内容集合
+    public List<News> queryNews(int position) {
+        synchronized (LOCK) {
+            SQLiteDatabase _DB = null;
+            List<News> _newsList = null;
+            try {
+                _DB = mDBHelper.getReadableDatabase();
+                String _selection = DBData.News_COLUMNS.position + " = ? ";
+                String[] _selectionArgs = new String[]{String.valueOf(position)};
+                Cursor _cursor = _DB.query(DBData.News_COLUMNS.TABLE_NAME, null, _selection, _selectionArgs, null, null, null, null);
+                if (_cursor != null && _cursor.getCount() > 0) {
+                    _newsList = new ArrayList<>(_cursor.getCount());
+                    for (_cursor.moveToFirst(); !_cursor.isAfterLast(); _cursor.moveToNext()) {
+                        _newsList.add(toNews(_cursor));
+                    }
+                    _cursor.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } catch (Error e) {
+                e.printStackTrace();
+            }
+            return _newsList;
+        }
     }
 }

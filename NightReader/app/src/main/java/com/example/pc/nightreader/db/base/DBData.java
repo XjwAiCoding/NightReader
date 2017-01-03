@@ -26,6 +26,8 @@ public class DBData {
         public static final String PICSMALL="picSmall";
        //新闻来源
         public static final String URL="url";
+        //新闻类别
+        public static final String position="position";
 
         /** 创建SQL表 */
         public static final String SQL_CREATE_News="CREATE TABLE IF NOT EXISTS "
@@ -33,6 +35,7 @@ public class DBData {
                 +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +NAME+" VARCHAR,"
                 +DESCRIPTION+" INTEGER,"
+                +position+" INTEGER,"
                 +URL+" VARCHAR,"
                 +PICSMALL+" VARCHAR)";
 

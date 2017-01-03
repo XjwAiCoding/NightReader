@@ -22,7 +22,7 @@ public class AsyncNews extends AsyncTask<Void,Void,List<News>> {
         //解析入库
          NewsHelper.initNewsData(mContext,position);
         //查询数据库，返回数据集合
-       List<News> _newsList= new NewsDBHelper(mContext).queryAllNews();
+       List<News> _newsList= new NewsDBHelper(mContext).queryNews(position);
         return _newsList;
     }
 
