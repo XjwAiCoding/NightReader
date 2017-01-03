@@ -1,13 +1,13 @@
 package com.example.pc.nightreader.ui.adapter;
 
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.pc.nightreader.R;
+import com.example.pc.nightreader.utils.ImageLoaderUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +30,11 @@ public class PhotoPagerAdapter extends PagerAdapter  {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = (View) LayoutInflater.from(mActivity).inflate(R.layout.img_browse, null);
+        View view = LayoutInflater.from(mActivity).inflate(R.layout.img_browse, null);
         PhotoView img=(PhotoView)view.findViewById(R.id.photoview);
         //图片加载
-        ((ViewPager) container).addView(view);
+        container.addView(view);
+        ImageLoaderUtils.displayPhoto(mActivity,img,mUrlList.get(position));
         img.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
             @Override
             public void onPhotoTap(View view, float x, float y) {
@@ -60,6 +61,6 @@ public class PhotoPagerAdapter extends PagerAdapter  {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        ((ViewPager) container).removeView((View) object);
+      container.removeView((View) object);
     }
 }

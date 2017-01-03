@@ -14,6 +14,9 @@ import com.example.pc.nightreader.widget.ViewFinder;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by xujiawei on 2016/12/12.
+ */
 public class PhotoDetainActivity extends BaseActivity {
 
    private  ViewPager mPhotoPager;
@@ -47,7 +50,7 @@ public class PhotoDetainActivity extends BaseActivity {
     }
 
     /** 回退按钮点击事件 （xml注册的） */
-   public void  onback(View view){
+   public void  onBack(View view){
        finish();
    }
 

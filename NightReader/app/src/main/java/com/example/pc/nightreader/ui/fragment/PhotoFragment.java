@@ -29,16 +29,19 @@ import com.example.pc.nightreader.widget.ViewFinder;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *图片
- **/
+
+ /**
+  * Created by xujiawei on 2016/12/12.
+  * 图片
+  */
+
 public class PhotoFragment extends BaseFragment {
     private AppCompatActivity mActivity;//载体activity
     private View mRootView;
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mRefreshLayout;
     private StaggeredGridLayoutManager mStaggeredGridManager;
-    private ArrayList<String> mUrlList =new ArrayList<String>();
+    private ArrayList<String> mUrlList =new ArrayList<>();
     public PhotoFragment() {
 
     }
@@ -101,7 +104,7 @@ public class PhotoFragment extends BaseFragment {
             public void onSuccess(List<Photo> pData) {
                 PhotoAdapter _adapter=new PhotoAdapter(pData,mActivity);
                 mRecyclerView.setAdapter(_adapter);
-                registerListener(_adapter);
+                registerListener(_adapter,pData);
             }
 
             @Override
@@ -118,13 +121,14 @@ public class PhotoFragment extends BaseFragment {
     }
 
     /**注册点击事件*/
-    public  void registerListener(final PhotoAdapter pAdapter){
+    public  void registerListener(final PhotoAdapter pAdapter, final List<Photo> pData){
         pAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                //根据点击位置获取相应实体类并将url属性添加到mUrlList集合中
-               Photo _Photo=pAdapter.getItem(position);
-               mUrlList.add(position,_Photo.getUrl());
+                 for (Photo _photo:pData){
+                 mUrlList.add(_photo.getUrl());
+                 }
                 //跳转到图片详情activity
                  Intent intent = PhotoDetainActivity.getIntent(mActivity);
                  intent.putExtra("position",position);

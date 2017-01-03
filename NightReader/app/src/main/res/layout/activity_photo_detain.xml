@@ -12,8 +12,8 @@
         android:id="@+id/image_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onback"
-        android:src="@mipmap/returnbt" />
+        android:onClick="onBack"
+        android:src="@mipmap/returnarrow" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/Photo_viewpager"

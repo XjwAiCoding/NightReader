@@ -22,7 +22,6 @@ import java.util.List;
 public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      List<Photo> mList=new ArrayList<>();
      Context mContext;
-    private List<Integer> mHeights = new ArrayList<>();//存放图片大小的集合
     private  OnItemClickListener mOnItemClickListener;
     public PhotoAdapter() {
     }
@@ -30,7 +29,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public PhotoAdapter(List<Photo> pList, Context pContext) {
         mList.addAll(pList);
         mContext=pContext;
-       // getPhotoHeight();
     }
 
     @Override
