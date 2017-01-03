@@ -26,8 +26,8 @@ public class ImageLoaderUtils {
             throw new IllegalArgumentException("argument error");
         }
 
-      Glide.with(context).load(url).placeholder(R.mipmap.jiazai)
-                .error(R.mipmap.shibai).crossFade().into(imageView);
+      Glide.with(context).load(url).placeholder(R.mipmap.refersh)
+                .error(R.mipmap.fail).crossFade().into(imageView);
     }
 
     public static void displayPhoto(Context context, ImageView imageView, String url) {
