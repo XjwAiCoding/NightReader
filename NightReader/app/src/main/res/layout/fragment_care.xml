@@ -15,6 +15,7 @@
 
 
             <LinearLayout
+                android:visibility="gone"
                 android:padding="5dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -37,10 +38,11 @@
             </LinearLayout>
 
            <RelativeLayout
+               android:visibility="gone"
              android:background="#bebcbc"
              android:layout_width="match_parent"
              android:layout_height="1dp">
-         </RelativeLayout>
+           </RelativeLayout>
 
 
             <LinearLayout

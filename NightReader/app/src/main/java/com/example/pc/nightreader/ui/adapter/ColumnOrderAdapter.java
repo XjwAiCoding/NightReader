@@ -149,7 +149,7 @@ public class ColumnOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                                 startAnimation(recyclerView, currentView, targetX, targetY);
 
                             }
-                            // 如果在屏幕内,则添加一个位移动画
+                            // 如果不在在屏幕内,则我的频道 移动到 其他频道,不携带动画
                             else {
                                 moveMyToOther(myHolder);
                             }
@@ -166,7 +166,7 @@ public class ColumnOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     public boolean onLongClick(final View v) {
                         if (!isEditMode) {
                             RecyclerView recyclerView = ((RecyclerView) parent);
-                            startEditMode(recyclerView);
+                            startEditMode(recyclerView);//开启编辑模式
 
                             // header 按钮文字 改成 "完成"
                             View view = recyclerView.getChildAt(0);
@@ -176,7 +176,7 @@ public class ColumnOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                             }
                         }
 
-                        mItemTouchHelper.startDrag(myHolder);
+                        mItemTouchHelper.startDrag(myHolder);//开启拖拽功能
                         return true;
                     }
                 });
@@ -192,7 +192,7 @@ public class ColumnOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                                 case MotionEvent.ACTION_MOVE:
                                     //如果触摸时间大于100ms，就判定是拖拽
                                     if (System.currentTimeMillis() - startTime > SPACE_TIME) {
-                                        mItemTouchHelper.startDrag(myHolder);
+                                        mItemTouchHelper.startDrag(myHolder);//开启拖拽功能
                                     }
                                     break;
                                 case MotionEvent.ACTION_CANCEL:
