@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">NightReader</string>
+    <string name="app_name">晚安阅读</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="my_cahnnel">我的频道</string>

@@ -126,7 +126,7 @@ public class NewsListFragment extends BaseFragment {
            public void onFail(Exception pE) {
 
            }
-       }).execute();
+       },mPosition).execute();
     }
 
     //adapter点击事件

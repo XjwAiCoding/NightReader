@@ -3,6 +3,7 @@ package com.example.pc.nightreader.logic;
 import android.content.Context;
 
 import com.example.pc.nightreader.db.NewsDBHelper;
+import com.example.pc.nightreader.db.base.CommonData;
 import com.example.pc.nightreader.entity.News;
 import com.example.pc.nightreader.entity.parse.NewsParse;
 import com.example.pc.nightreader.utils.OkHttpUtils;
@@ -14,10 +15,9 @@ import java.util.ArrayList;
  */
 public class NewsHelper {
 
-    // private  static  final String url= "http://www.imooc.com/api/teacher?type=4&num=30";
-    private  static  final String url= "http://api.tianapi.com/social/?key=6e64995fdca7d5438533a964ae38b486&num=50 ";
+   // private  static  final String url= "http://api.tianapi.com/social/?key=6e64995fdca7d5438533a964ae38b486&num=50 ";
 
-    public static void initNewsData(final Context pContext){
+    public static void initNewsData(final Context pContext,int position){
 
         OkHttpUtils.ResultCallback<String> _resultCallback=new OkHttpUtils.ResultCallback<String>() {
             @Override
@@ -35,7 +35,8 @@ public class NewsHelper {
             }
         };
 
-        OkHttpUtils.get(url, _resultCallback);
+
+        OkHttpUtils.get(CommonData.getUrlList().get(position), _resultCallback);
 
     }
 
