@@ -96,7 +96,7 @@ public class newsFragment extends BaseFragment  implements View.OnClickListener{
         mTabLayout.setupWithViewPager(mPager);
         initTab(mMychannle_name.length, mTabLayout);
         mFragmentList.addAll(initFragment(mMychannle_name.length));
-        mPager.setOffscreenPageLimit(4);//设置viewpager缓存页数量
+        mPager.setOffscreenPageLimit(15);//设置viewpager缓存页数量
         PageAdapter _Adapter = new PageAdapter(getChildFragmentManager(), mMyChannleList, mFragmentList);
         mPager.setAdapter(_Adapter);
         mExpend_arrow=ViewFinder.getView(view, R.id.expandArrow);
