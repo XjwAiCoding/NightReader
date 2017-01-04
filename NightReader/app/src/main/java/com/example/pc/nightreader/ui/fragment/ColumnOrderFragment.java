@@ -10,7 +10,6 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.pc.nightreader.R;
 import com.example.pc.nightreader.logic.ItemDragHelperCallback;
@@ -81,7 +80,7 @@ public class ColumnOrderFragment extends BaseFragment {
         adapter.setOnMyChannelItemClickListener(new ColumnOrderAdapter.OnMyChannelItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(mActivity, mMyChannleList.get(position), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(mActivity, mMyChannleList.get(position), Toast.LENGTH_SHORT).show();
             }
         });
     }
