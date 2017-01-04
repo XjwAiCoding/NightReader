@@ -20,7 +20,12 @@ public class AsyncNews extends AsyncTask<Void,Void,List<News>> {
     @Override
     protected List<News> doInBackground(Void... voids) {
         //解析入库
-         NewsHelper.initNewsData(mContext,position);
+        try {
+            NewsHelper.initNewsData(mContext,position);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         //查询数据库，返回数据集合
        List<News> _newsList= new NewsDBHelper(mContext).queryNews(position);
         return _newsList;

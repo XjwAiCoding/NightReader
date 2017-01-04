@@ -26,7 +26,11 @@ public class AsyncPhoto extends AsyncTask<Void,Void,List<Photo>> {
     @Override
     protected List<Photo> doInBackground(Void... params) {
         //解析入库
-        PhotoHelper.initPhotoData(mContext);
+        try {
+            PhotoHelper.initPhotoData(mContext);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //查询数据库，返回数据集合
         List<Photo> _PhotoList= new PhotoDBHelper(mContext).queryAllPhoto();
         return _PhotoList;

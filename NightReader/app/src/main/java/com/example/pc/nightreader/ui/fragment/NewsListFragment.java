@@ -71,8 +71,13 @@ public class NewsListFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_news_list, container, false);
         initView();
-        initData();
         return mRootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initData();
     }
 
     @Override
@@ -110,11 +115,16 @@ public class NewsListFragment extends BaseFragment {
     public void initData() {
        new AsyncNews(mActivity, new KLoadListener<List<News>>() {
            @Override
-           public void onSuccess(List<News> pData) {
-               //传递数据
-              NewsAdapter _Adapter= new NewsAdapter(mActivity,pData);
-              mRecyclerView.setAdapter(_Adapter);
-               registerListener(_Adapter);
+           public void onSuccess(final List<News> pData) {
+               mActivity.runOnUiThread(new Runnable() {
+                   @Override
+                   public void run() {
+                       //传递数据
+                       NewsAdapter _Adapter= new NewsAdapter(mActivity,pData);
+                       mRecyclerView.setAdapter(_Adapter);
+                       registerListener(_Adapter);
+                   }
+               });
            }
 
            @Override
