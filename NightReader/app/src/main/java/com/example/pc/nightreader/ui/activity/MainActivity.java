@@ -63,6 +63,7 @@ public class MainActivity extends BaseActivity  implements View.OnClickListener{
     @Override
     public void initView() {
         mBack=ViewFinder.getView(this, R.id.back);
+        mBack.setVisibility(View.GONE);
         mDayOrNight=ViewFinder.getView(this, R.id.DayOrNight);
 
         mTabLayout = ViewFinder.getView(this, R.id.tablayout);
