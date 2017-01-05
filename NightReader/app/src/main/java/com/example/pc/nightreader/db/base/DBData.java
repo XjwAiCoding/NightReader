@@ -93,6 +93,44 @@ public class DBData {
 
     }
 
+    /**MyChannle表 */
+    public static final class MyChannle_COLUMNS{
+        /**  表名 */
+        public static final String TABLE_NAME="MyChannle";
+        /**  ID */
+        public static final String ID="_id";
+        /**  名字*/
+        public static final String NAME="name";
+        /**  接口url源 */
+        public static final String SOURCE="source";
+
+        /** 创建SQL表 */
+        public static final String SQL_CREATE_MYCHANNLE="CREATE TABLE IF NOT EXISTS "
+                +TABLE_NAME+"("
+                +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
+                +NAME+" VARCHAR,"
+                +SOURCE+" VARCHAR,";
+    }
+
+
+    /**OtherChannle表 */
+    public static final class OtherChannle_COLUMNS{
+        /**  表名 */
+        public static final String TABLE_NAME="OtherChannle";
+        /**  ID */
+        public static final String ID="_id";
+        /**  名字*/
+        public static final String NAME="name";
+        /**  接口url源 */
+        public static final String SOURCE="source";
+
+        /** 创建SQL表 */
+        public static final String SQL_CREATE_MYCHANNLE="CREATE TABLE IF NOT EXISTS "
+                +TABLE_NAME+"("
+                +ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
+                +NAME+" VARCHAR,"
+                +SOURCE+" VARCHAR,";
+    }
 
     /* ====== SQL END =======*/
 

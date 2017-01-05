@@ -1,0 +1,64 @@
+﻿{
+    "Channle": [
+        {
+            "name": "社会",
+            "source": "http://api.tianapi.com/social/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "国内",
+            "source": "http://api.tianapi.com/guonei/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "国际",
+            "source": "http://api.tianapi.com/world/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "娱乐",
+            "source": "http://api.tianapi.com/huabian/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "体育",
+            "source": "http://api.tianapi.com/tiyu/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "NBA",
+            "source": "http://api.tianapi.com/nba/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "足球",
+            "source": "http://api.tianapi.com/football/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "科技",
+            "source": "http://api.tianapi.com/keji/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "创业",
+            "source": "http://api.tianapi.com/startup/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "苹果",
+            "source": "http://api.tianapi.com/apple/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "移动",
+            "source": "http://api.tianapi.com/mobile/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "旅游",
+            "source": "http://api.tianapi.com/travel/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "健康",
+            "source": "http://api.tianapi.com/health/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "奇闻",
+            "source": "http://api.tianapi.com/qiwen/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "VR",
+            "source": "http://api.tianapi.com/vr/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        }
+    ]
+}

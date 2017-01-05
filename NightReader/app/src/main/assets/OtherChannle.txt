@@ -1,0 +1,12 @@
+﻿{
+    "Channle": [
+        {
+            "name": "IT",
+            "source": "http://api.tianapi.com/it/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        },
+        {
+            "name": "精选",
+            "source": "https://api.tianapi.com/wxnew/?key=6e64995fdca7d5438533a964ae38b486&num=50"
+        }
+    ]
+}
